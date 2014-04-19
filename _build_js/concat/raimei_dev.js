@@ -489,6 +489,7 @@ var RAIMEI = {};
                 request;
 
             request = new XMLHttpRequest();
+            request.open( "GET", url, true );
             request.responseType = "arraybuffer";
             request.onload = function () {
 
@@ -514,7 +515,6 @@ var RAIMEI = {};
 
             };
 
-            request.open( "GET", url, true );
             request.send( null );
         };
 

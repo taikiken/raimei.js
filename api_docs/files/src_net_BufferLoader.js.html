@@ -143,6 +143,7 @@
                 request;
 
             request = new XMLHttpRequest();
+            request.open( &quot;GET&quot;, url, true );
             request.responseType = &quot;arraybuffer&quot;;
             request.onload = function () {
 
@@ -168,7 +169,6 @@
 
             };
 
-            request.open( &quot;GET&quot;, url, true );
             request.send( null );
         };
 
