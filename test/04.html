@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>RAIMEI Test - 04</title>
+<link rel="stylesheet" href="css/reset.css"/>
+<script type="text/javascript" src="../lib/raimei_dev.js"></script>
+</head>
+<body>
+<h1>PlaySoundWithBuffer</h1>
+<div id="container"></div>
+<script type="text/javascript" charset="utf-8">
+( function ( window ){
+	"use strict";
+	var document = window.document,
+		container = document.getElementById( "container" ),
+
+		RAIMEI = window.RAIMEI,
+
+		message = "",
+
+		context,
+		audio_context
+	;
+
+	function onLoad ( event ) {
+		console.log( "load", event );
+
+		var play_sound = new RAIMEI.PlaySoundWithBuffer( event.context, event.buffer );
+//		play_sound.start();
+		play_sound.play( 3 );
+	}
+
+	function onError ( event ) {
+		console.log( "error", event );
+	}
+
+	if ( RAIMEI.Detector.detects() ) {
+		message += "has WebAudio API<br>";
+		console.log( window.AudioContext );
+		message += window.AudioContext;
+
+		context = new RAIMEI.Context();
+		audio_context = context.get();
+		console.log( audio_context );
+		message += "<br>";
+		message += audio_context;
+
+		var loader = new RAIMEI.BufferLoader( audio_context, "mp3/chrono.mp3" );
+		loader.addEventListener( "load", onLoad );
+		loader.addEventListener( "error", onError );
+		loader.load();
+	} else {
+		message += "dont use WebAudio API<br>";
+	}
+
+	container.innerHTML = message;
+
+}( window ) );
+</script>
+</body>
+</html>

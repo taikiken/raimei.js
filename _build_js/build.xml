@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<project default="concat" basedir=".">
+
+    <property name="version" value="0.0.4"/>
+
+    <property name="dist" value="./dist/"/>
+    <property name="concat" value="./concat"/>
+    <property name="src" value="./src"/>
+
+    <property name="concatenated" value="${concat}/raimei.${version}.js"/>
+    <property name="concatenated_dev" value="${concat}/raimei_dev.js"/>
+
+    <property name="lib" value="../lib/"/>
+
+    <!--<property name="project" value="../_build_tool"/>-->
+    <!--<property name="task" value="js"/>-->
+
+    <target name="concat">
+        <mkdir dir="${concat}" />
+
+        <delete>
+            <fileset dir="${concat}" includes="*.js" />
+            <fileset dir="${dist}" includes="*.js" />
+            <fileset dir="${lib}" includes="*.js" />
+        </delete>
+
+        <!-- concat -->
+        <echo message="Building ${concatenated}" />
+
+        <filelist id="file-list" dir="${src}">
+            <file name="RAIMEI.js"/>
+
+            <file name="util/Detector.js"/>
+
+            <file name="events/EventDispatcher.js"/>
+
+            <file name="core/Context.js"/>
+
+            <file name="net/BufferLoader.js"/>
+            <file name="sound/PlaySoundWithBuffer.js"/>
+
+        </filelist>
+
+        <concat destfile="${concatenated}" encoding="UTF-8" outputencoding="UTF-8" fixlastline="true">
+            <filelist refid="file-list" />
+        </concat>
+        <concat destfile="${concatenated_dev}" encoding="UTF-8" outputencoding="UTF-8" fixlastline="true">
+            <filelist refid="file-list" />
+        </concat>
+
+        <apply executable="java" parallel="false" verbose="true" dest="${dist}">
+            <fileset dir="${concat}">
+                <include name="*.js" />
+            </fileset>
+            <arg line="-jar" />
+            <arg path="./_build/compiler.jar" />
+            <arg value="--warning_level" />
+            <arg value="QUIET" />
+            <arg value="--js_output_file" />
+            <targetfile />
+            <arg value="--js" />
+            <mapper type="glob" from="*.js" to="*.min.js" />
+        </apply>
+
+        <copy todir="${lib}">
+            <fileset dir="${concat}" />
+        </copy>
+
+        <copy todir="${lib}">
+            <fileset dir="${dist}" />
+        </copy>
+
+    </target>
+
+</project>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>RAIMEI Test - 01</title>
+<link rel="stylesheet" href="css/reset.css"/>
+<script type="text/javascript" src="../lib/raimei_dev.js"></script>
+</head>
+<body>
+<h1>Detector</h1>
+<div id="container"></div>
+<script type="text/javascript" charset="utf-8">
+( function ( window ){
+	"use strict";
+	var document = window.document,
+		container = document.getElementById( "container" ),
+
+		RAIMEI = window.RAIMEI,
+
+		message = ""
+	;
+
+	if ( RAIMEI.Detector.detects() ) {
+		message += "has WebAudio API<br>";
+		console.log( window.AudioContext );
+		message += window.AudioContext;
+	} else {
+		message += "dont use WebAudio API<br>";
+	}
+
+	container.innerHTML = message;
+
+}( window ) );
+</script>
+</body>
+</html>
