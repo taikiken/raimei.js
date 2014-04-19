@@ -55,7 +55,7 @@
          * @method _createSource
          * @param {AudioContext} context window.AudioContext instance
          * @param {AudioBuffer} buffer AudioBuffer instance
-         * @returns {*}
+         * @returns {*} AudioSourceを返します
          * @private
          */
         p._createSource = function ( context, buffer ) {

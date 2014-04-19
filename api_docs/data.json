@@ -1,0 +1,468 @@
+{
+    "project": {
+        "name": "raimei.js API",
+        "description": "The raimei.js API: a library for doing WebAudio",
+        "url": "https://github.com/taikiken/raimei.js"
+    },
+    "files": {
+        "src/core/Context.js": {
+            "name": "src/core/Context.js",
+            "modules": {},
+            "classes": {
+                "Context": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/events/EventDispatcher.js": {
+            "name": "src/events/EventDispatcher.js",
+            "modules": {},
+            "classes": {
+                "EventDispatcher": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/net/BufferLoader.js": {
+            "name": "src/net/BufferLoader.js",
+            "modules": {},
+            "classes": {
+                "BufferLoader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sound/PlaySoundWithBuffer.js": {
+            "name": "src/sound/PlaySoundWithBuffer.js",
+            "modules": {},
+            "classes": {
+                "PlaySoundWithBuffer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/util/Detector.js": {
+            "name": "src/util/Detector.js",
+            "modules": {},
+            "classes": {
+                "Detector": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/RAIMEI.js": {
+            "name": "src/RAIMEI.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "RAIMEI": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Context": {
+            "name": "Context",
+            "shortname": "Context",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/core/Context.js",
+            "line": 18,
+            "is_constructor": 1
+        },
+        "EventDispatcher": {
+            "name": "EventDispatcher",
+            "shortname": "EventDispatcher",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/events/EventDispatcher.js",
+            "line": 17,
+            "is_constructor": 1
+        },
+        "BufferLoader": {
+            "name": "BufferLoader",
+            "shortname": "BufferLoader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/net/BufferLoader.js",
+            "line": 23,
+            "params": [
+                {
+                    "name": "context",
+                    "description": "window.AudioContext instance",
+                    "type": "AudioContext"
+                },
+                {
+                    "name": "url",
+                    "description": "sound file path",
+                    "type": "String"
+                }
+            ],
+            "is_constructor": 1
+        },
+        "PlaySoundWithBuffer": {
+            "name": "PlaySoundWithBuffer",
+            "shortname": "PlaySoundWithBuffer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/sound/PlaySoundWithBuffer.js",
+            "line": 18,
+            "params": [
+                {
+                    "name": "context",
+                    "description": "window.AudioContext instance",
+                    "type": "AudioContext"
+                },
+                {
+                    "name": "buffer",
+                    "description": "AudioBuffer instance",
+                    "type": "AudioBuffer"
+                },
+                {
+                    "name": "start_time",
+                    "description": "start time optional, default is 0",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "is_constructor": 1
+        },
+        "Detector": {
+            "name": "Detector",
+            "shortname": "Detector",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/util/Detector.js",
+            "line": 18,
+            "is_constructor": 1
+        },
+        "RAIMEI": {
+            "name": "RAIMEI",
+            "shortname": "RAIMEI",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": []
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/core/Context.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:45\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "Context"
+        },
+        {
+            "file": "src/core/Context.js",
+            "line": 40,
+            "itemtype": "method",
+            "name": "get",
+            "return": {
+                "description": "window.AudioContext instanceを返します",
+                "type": "window.AudioContext"
+            },
+            "class": "Context"
+        },
+        {
+            "file": "src/events/EventDispatcher.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:09\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/events/EventDispatcher.js",
+            "line": 29,
+            "itemtype": "method",
+            "name": "addEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "event type",
+                    "type": "String"
+                },
+                {
+                    "name": "listener",
+                    "description": "Event Handler",
+                    "type": "Function"
+                }
+            ],
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/events/EventDispatcher.js",
+            "line": 54,
+            "itemtype": "method",
+            "name": "hasEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "event type",
+                    "type": "String"
+                },
+                {
+                    "name": "listener",
+                    "description": "Event Handler",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/events/EventDispatcher.js",
+            "line": 96,
+            "itemtype": "method",
+            "name": "dispatchEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "require event.type:String",
+                    "type": "Object"
+                }
+            ],
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/events/EventDispatcher.js",
+            "line": 123,
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "static": 1,
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/net/BufferLoader.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 18:17\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.\n\nhttp://webaudioapi.com/samples/shared.js\nmodified by taikiken",
+            "class": "BufferLoader"
+        },
+        {
+            "file": "src/net/BufferLoader.js",
+            "line": 38,
+            "itemtype": "method",
+            "name": "load",
+            "class": "BufferLoader"
+        },
+        {
+            "file": "src/sound/PlaySoundWithBuffer.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 19:21\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "PlaySoundWithBuffer"
+        },
+        {
+            "file": "src/sound/PlaySoundWithBuffer.js",
+            "line": 37,
+            "itemtype": "method",
+            "name": "start",
+            "class": "PlaySoundWithBuffer"
+        },
+        {
+            "file": "src/sound/PlaySoundWithBuffer.js",
+            "line": 45,
+            "itemtype": "method",
+            "name": "play",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "PlaySoundWithBuffer"
+        },
+        {
+            "file": "src/sound/PlaySoundWithBuffer.js",
+            "line": 54,
+            "itemtype": "method",
+            "name": "_createSource",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "window.AudioContext instance",
+                    "type": "AudioContext"
+                },
+                {
+                    "name": "buffer",
+                    "description": "AudioBuffer instance",
+                    "type": "AudioBuffer"
+                }
+            ],
+            "return": {
+                "description": "AudioSourceを返します",
+                "type": "*"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "PlaySoundWithBuffer"
+        },
+        {
+            "file": "src/util/Detector.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:09\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "Detector"
+        },
+        {
+            "file": "src/util/Detector.js",
+            "line": 26,
+            "itemtype": "method",
+            "name": "detects",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "static": 1,
+            "class": "Detector"
+        },
+        {
+            "file": "src/RAIMEI.js",
+            "line": 1,
+            "license": "inazumatv.com",
+            "author": "(at)taikiken / http://inazumatv.com",
+            "date": "2014/04/19 - 16:37\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "RAIMEI"
+        },
+        {
+            "file": "src/RAIMEI.js",
+            "line": 181,
+            "description": "Class継承に使用します",
+            "itemtype": "method",
+            "name": "extend",
+            "params": [
+                {
+                    "name": "PARENT",
+                    "description": "親クラス",
+                    "type": "Function"
+                },
+                {
+                    "name": "CHILD",
+                    "description": "子クラス",
+                    "type": "Function"
+                }
+            ],
+            "class": "RAIMEI"
+        },
+        {
+            "file": "src/RAIMEI.js",
+            "line": 194,
+            "description": "数値チェックを行います",
+            "itemtype": "method",
+            "name": "isNumeric",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Number",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "数値か否かを返します",
+                "type": "Boolean"
+            },
+            "class": "RAIMEI"
+        },
+        {
+            "file": "src/RAIMEI.js",
+            "line": 206,
+            "description": "配列内の最大値を取得します",
+            "itemtype": "method",
+            "name": "maxValue",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "配列内の最大値を返します",
+                "type": "Number"
+            },
+            "class": "RAIMEI"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/core/Context.js:40"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/events/EventDispatcher.js:54"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/PlaySoundWithBuffer.js:54"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/Detector.js:26"
+        },
+        {
+            "message": "unknown tag: license",
+            "line": " src/RAIMEI.js:1"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " src/RAIMEI.js:1"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/RAIMEI.js:194"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/RAIMEI.js:206"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:45\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/core/Context.js:1"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:09\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/events/EventDispatcher.js:1"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 18:17\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.\n\nhttp://webaudioapi.com/samples/shared.js\nmodified by taikiken",
+            "line": " src/net/BufferLoader.js:1"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 19:21\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/PlaySoundWithBuffer.js:1"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:09\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/util/Detector.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/RAIMEI.js:1"
+        }
+    ]
+}

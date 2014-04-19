@@ -1,0 +1,8 @@
+{
+    "name": "raimei.js API",
+    "description": "The raimei.js API: a library for doing WebAudio",
+    "url": "https://github.com/taikiken/raimei.js",
+    "options": {
+        "outdir": "../api_docs"
+    }
+}
