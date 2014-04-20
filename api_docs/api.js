@@ -8,7 +8,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "EventDispatcher",
         "PlaySoundWithBuffer",
         "RAIMEI",
-        "VolumeControl"
+        "VolumeControl",
+        "WebAudioDetector"
     ],
     "modules": [],
     "allModules": []
