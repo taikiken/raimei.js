@@ -864,6 +864,7 @@ var RAIMEI = {};
         p._dispose = function () {
             var source = this._source;
             source.removeEventListener( "ended", this._boundEnded );
+            source = null;
         };
 
         /**

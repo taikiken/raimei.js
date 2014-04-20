@@ -60,6 +60,7 @@
 	// stop
 	btn_stop.addEventListener( "click", function () {
 		play_sound.stop();
+
 		btn_stop.setAttribute( "disabled", "disabled" );
 		btn_pause.setAttribute( "disabled", "disabled" );
 		btn_start.removeAttribute( "disabled" );
@@ -68,6 +69,7 @@
 	// pause
 	btn_pause.addEventListener( "click", function () {
 		play_sound.pause();
+
 		btn_start.setAttribute( "disabled", "disabled" );
 		btn_pause.setAttribute( "disabled", "disabled" );
 		btn_stop.removeAttribute( "disabled" );
@@ -79,6 +81,8 @@
 	// resume
 	btn_resume.addEventListener( "click", function () {
 		play_sound.resume();
+		play_sound.setVolume( volume )
+
 		btn_start.setAttribute( "disabled", "disabled" );
 		btn_resume.setAttribute( "disabled", "disabled" );
 		btn_stop.removeAttribute( "disabled" );
