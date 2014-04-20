@@ -2,14 +2,17 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>RAIMEI Test - 03</title>
+<title>RAIMEI Test - 05</title>
 <link rel="stylesheet" href="css/reset.css"/>
 <script type="text/javascript" src="../lib/raimei.detector.min.js"></script>
 <script type="text/javascript" src="../lib/raimei_dev.js"></script>
 </head>
 <body>
-<h1>BufferLoader</h1>
+<h1>PlaySoundWithBuffer - end -> start</h1>
 <div id="container"></div>
+<p><button id="button-start">start</button></p>
+<p><button id="button-pause">pause</button></p>
+<p><button id="button-resume">resume</button></p>
 <script type="text/javascript" charset="utf-8">
 ( function ( window ){
 	"use strict";
@@ -21,19 +24,29 @@
 		message = "",
 
 		context,
-		audio_context
+		audio_context,
+		play_sound,
+
+		btn_start = document.getElementById( "button-start" ),
+		btn_pause = document.getElementById( "button-pause" ),
+		btn_resume = document.getElementById( "button-resume" )
 	;
 
+	btn_start.setAttribute( "disabled", "disabled" );
+	btn_pause.setAttribute( "disabled", "disabled" );
+	btn_resume.setAttribute( "disabled", "disabled" );
+
+	function onEnded ( event ) {
+//		play_sound.removeEventListener( "ended", onEnded );
+		console.log( "ended ", event );
+		play_sound.start();
+	}
+
 	function onLoad ( event ) {
-		console.log( "load", event );
+		console.log( "load ", event );
 
-		var buffer = event.buffer,
-			context = event.context,
-			source = context.createBufferSource();
-
-		source.buffer = buffer;
-		source.connect( context.destination );
-		source.start( 0 );
+		play_sound = new RAIMEI.PlaySoundWithBuffer( event.context, event.buffer );
+		play_sound.addEventListener( "ended", onEnded );
 	}
 
 	function onError ( event ) {
@@ -51,13 +64,12 @@
 		message += "<br>";
 		message += audio_context;
 
-//		var loader = new RAIMEI.BufferLoader( audio_context, "mp3/chrono.mp3" );
-		var loader = new RAIMEI.BufferLoader( audio_context, "mp3/drums.wav" );
+		var loader = new RAIMEI.BufferLoader( audio_context, "mp3/chrono.mp3" );
 		loader.addEventListener( "load", onLoad );
 		loader.addEventListener( "error", onError );
 		loader.load();
 	} else {
-		message += "dont use WebAudio API<br>";
+		message += "can't use WebAudio API<br>";
 	}
 
 	container.innerHTML = message;

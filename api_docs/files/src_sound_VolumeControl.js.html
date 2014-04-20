@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/net/BufferLoader.js - raimei.js API</title>
+    <title>src/sound/VolumeControl.js - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,14 +96,14 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/net/BufferLoader.js</h1>
+                        <h1 class="file-heading">File: src/sound/VolumeControl.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
  * license inazumatv.com
  * author (at)taikiken / http://inazumatv.com
- * date 2014/04/19 - 18:17
+ * date 2014/04/20 - 18:26
  *
  * Copyright (c) 2011-2014 inazumatv.com, inc.
  *
@@ -111,82 +111,76 @@
  * http://www.opensource.org/licenses/mit-license.html
  *
  * This notice shall be included in all copies or substantial portions of the Software.
- *
- * http://webaudioapi.com/samples/shared.js
- * modified by taikiken
  */
 ( function ( window ){
     &quot;use strict&quot;;
-    var RAIMEI = window.RAIMEI,
-        EventDispatcher = RAIMEI.EventDispatcher
-    ;
+    var RAIMEI = window.RAIMEI;
 
-    RAIMEI.BufferLoader = ( function (){
+    RAIMEI.VolumeControl = ( function (){
         /**
-         * @class BufferLoader
+         * @class VolumeControl
          * @param {AudioContext} context AudioContext instance
-         * @param {String} url sound file path
+         * @param {AudioBuffer} buffer AudioBuffer instance
          * @constructor
          */
-        function BufferLoader ( context, url ) {
-            this._context = context;
-            this._url = url;
+        function VolumeControl ( context, source ) {
+            var gainNode = context.createGain();
+
+            source.connect( gainNode );
+            gainNode.connect( context.destination );
+
+            this._gainNode = gainNode;
+            this._gain = gainNode.gain;
         }
 
-        var p = BufferLoader.prototype;
-
-        EventDispatcher.initialize( p );
+        var p = VolumeControl.prototype;
 
         /**
-         * @method load
+         * Volumeを変更します
+         * @method volume
+         * @param {number} val 0 ~ 1
          */
-        p.load = function () {
-            var context = this._context,
-                url = this._url,
-                _this = this,
-                request;
-
-            function disPose () {
-                request.removeEventListener( &quot;load&quot;, onLoad );
-                request.removeEventListener( &quot;error&quot;, onError );
-            }
-
-            function onLoad () {
-                disPose();
-
-                context.decodeAudioData(
-                    request.response,
-                    function ( buffer ) {
-                        if ( !buffer ) {
-                            _this.dispatchEvent( { type: &quot;error&quot;, error: new Error( &quot;error decoding file data: &quot; + url ), currentTarget: request } );
-                            return;
-                        }
-                        // success
-                        _this.dispatchEvent( { type: &quot;load&quot;, buffer: buffer, context: context, currentTarget: request } );
-                    },
-                    function ( error ) {
-                        // error
-                        _this.dispatchEvent( { type: &quot;error&quot;, error: new Error( &quot;decode error: &quot; + url + &quot;, error: &quot; + error ), currentTarget: request } );
-                    }
-                );
-            }
-
-            function onError () {
-                disPose();
-
-                _this.dispatchEvent( { type: &quot;error&quot;, error: new Error( &quot;file not found: &quot; + url ), currentTarget: request } );
-            }
-
-            request = new XMLHttpRequest();
-            request.addEventListener( &quot;load&quot;, onLoad, false );
-            request.addEventListener( &quot;error&quot;, onError, false );
-            request.open( &quot;GET&quot;, url, true );
-            request.responseType = &quot;arraybuffer&quot;;
-
-            request.send( null );
+        p.volume = function ( val ) {
+            console.log( &quot;VolumeControl &quot;, val );
+            this._gain.value = this._normalize( val );
+            console.log( &quot;VolumeControl _gain&quot;, this._gain );
         };
 
-        return BufferLoader;
+        /**
+         * @method getGainNode
+         * @returns {GainNode} GainNodeを返します
+         */
+        p.getGainNode = function () {
+            return this._gainNode;
+        };
+
+        /**
+         * @method getGain
+         * @returns {AudioParam} GainNode.gain を返します
+         */
+        p.getGain = function () {
+            return this._gain;
+        };
+
+        /**
+         * 0 ~ 1 範囲に正規化
+         * @method _normalize
+         * @param val
+         * @returns {Number} 0 ~ 1の数値を返します
+         * @protected
+         */
+        p._normalize = function ( val ) {
+            // 0 to 1
+            if ( val &lt; 0 ) {
+                val = 0;
+            } else if ( val &gt; 1 ) {
+                val = 1;
+            }
+
+            return val;
+        };
+
+        return VolumeControl;
     }() );
 
 }( window ) );

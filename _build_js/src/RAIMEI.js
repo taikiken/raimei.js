@@ -214,4 +214,8 @@ var RAIMEI = {};
         return Math.max.apply( null, arr );
     };
 
+    RAIMEI.startTime = function () {
+        return 0;
+    };
+
 }( window ) );

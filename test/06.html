@@ -2,14 +2,18 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>RAIMEI Test - 04</title>
+<title>RAIMEI Test - 06</title>
 <link rel="stylesheet" href="css/reset.css"/>
 <script type="text/javascript" src="../lib/raimei.detector.min.js"></script>
 <script type="text/javascript" src="../lib/raimei_dev.js"></script>
 </head>
 <body>
-<h1>PlaySoundWithBuffer</h1>
+<h1>PlaySoundWithBuffer - start / stop</h1>
 <div id="container"></div>
+<p><button id="button-start">start</button>
+	<button id="button-stop">stop</button></p>
+<p><button id="button-pause">pause</button></p>
+<p><button id="button-resume">resume</button></p>
 <script type="text/javascript" charset="utf-8">
 ( function ( window ){
 	"use strict";
@@ -21,20 +25,47 @@
 		message = "",
 
 		context,
-		audio_context
+		audio_context,
+		play_sound,
+
+		btn_start = document.getElementById( "button-start" ),
+		btn_stop = document.getElementById( "button-stop" ),
+		btn_pause = document.getElementById( "button-pause" ),
+		btn_resume = document.getElementById( "button-resume" )
 	;
 
+	btn_start.setAttribute( "disabled", "disabled" );
+	btn_stop.setAttribute( "disabled", "disabled" );
+	btn_pause.setAttribute( "disabled", "disabled" );
+	btn_resume.setAttribute( "disabled", "disabled" );
+
+	btn_start.addEventListener( "click", function () {
+		play_sound.start();
+		btn_start.setAttribute( "disabled", "disabled" );
+		btn_stop.removeAttribute( "disabled" );
+	}, false );
+
+	btn_stop.addEventListener( "click", function () {
+		play_sound.stop();
+		btn_stop.setAttribute( "disabled", "disabled" );
+		btn_start.removeAttribute( "disabled" );
+	}, false );
+
+
+
 	function onEnded ( event ) {
+//		play_sound.removeEventListener( "ended", onEnded );
 		console.log( "ended ", event );
+		btn_stop.setAttribute( "disabled", "disabled" );
+		btn_start.removeAttribute( "disabled" );
 	}
 
 	function onLoad ( event ) {
 		console.log( "load ", event );
 
-		var play_sound = new RAIMEI.PlaySoundWithBuffer( event.context, event.buffer );
+		play_sound = new RAIMEI.PlaySoundWithBuffer( event.context, event.buffer );
 		play_sound.addEventListener( "ended", onEnded );
-		play_sound.start();
-//		play_sound.play( 3 );
+		btn_start.removeAttribute( "disabled" );
 	}
 
 	function onError ( event ) {

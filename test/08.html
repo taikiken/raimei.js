@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>RAIMEI Test - 08</title>
+<link rel="stylesheet" href="css/reset.css"/>
+<script type="text/javascript" src="../lib/raimei.detector.min.js"></script>
+<script type="text/javascript" src="../lib/raimei_dev.js"></script>
+</head>
+<body>
+<h1>PlaySoundWithBuffer - volume control</h1>
+<div id="container"></div>
+<p><button id="button-start">start</button>
+	<button id="button-stop">stop</button></p>
+<p><input type="range" min="0" max="400" id="volume" value="320"/></p>
+<p><button id="button-pause">pause</button></p>
+<p><button id="button-resume">resume</button></p>
+<script type="text/javascript" charset="utf-8">
+( function ( window ){
+	"use strict";
+	var document = window.document,
+		container = document.getElementById( "container" ),
+
+		RAIMEI = window.RAIMEI,
+
+		message = "",
+
+		context,
+		audio_context,
+		play_sound,
+
+		btn_start = document.getElementById( "button-start" ),
+		btn_stop = document.getElementById( "button-stop" ),
+		btn_pause = document.getElementById( "button-pause" ),
+		btn_resume = document.getElementById( "button-resume" ),
+
+		volume_slider = document.getElementById( "volume" ),
+		volume = 0.8
+	;
+
+	function insertMessage ( message ) {
+		container.innerHTML += message;
+	}
+
+	btn_start.setAttribute( "disabled", "disabled" );
+	btn_stop.setAttribute( "disabled", "disabled" );
+	btn_pause.setAttribute( "disabled", "disabled" );
+	btn_resume.setAttribute( "disabled", "disabled" );
+
+	// start
+	btn_start.addEventListener( "click", function () {
+		play_sound.start();
+		play_sound.volume( volume );
+
+		btn_start.setAttribute( "disabled", "disabled" );
+		btn_stop.removeAttribute( "disabled" );
+		btn_pause.removeAttribute( "disabled" );
+	}, false );
+
+	// stop
+	btn_stop.addEventListener( "click", function () {
+		play_sound.stop();
+		btn_stop.setAttribute( "disabled", "disabled" );
+		btn_pause.setAttribute( "disabled", "disabled" );
+		btn_start.removeAttribute( "disabled" );
+	}, false );
+
+	// pause
+	btn_pause.addEventListener( "click", function () {
+		play_sound.pause();
+		btn_start.setAttribute( "disabled", "disabled" );
+		btn_pause.setAttribute( "disabled", "disabled" );
+		btn_stop.removeAttribute( "disabled" );
+		btn_resume.removeAttribute( "disabled" );
+
+
+	}, false );
+
+	// resume
+	btn_resume.addEventListener( "click", function () {
+		play_sound.resume();
+		btn_start.setAttribute( "disabled", "disabled" );
+		btn_resume.setAttribute( "disabled", "disabled" );
+		btn_stop.removeAttribute( "disabled" );
+		btn_pause.removeAttribute( "disabled" );
+	}, false );
+
+	function volumeSliderChange ( event ) {
+		var val = event.srcElement.value;
+		volume = val / 400;
+
+		play_sound && play_sound.volume( volume );
+	}
+
+	volume_slider.addEventListener( "change", volumeSliderChange, false );
+
+
+	function playSoundHandler ( event ) {
+		console.log( "playSoundHandler ", event );
+
+		switch ( event.type ) {
+			case "ended":
+				btn_start.removeAttribute( "disabled" );
+				btn_stop.setAttribute( "disabled", "disabled" );
+				btn_pause.setAttribute( "disabled", "disabled" );
+				btn_resume.setAttribute( "disabled", "disabled" );
+
+				insertMessage( "<br>************************************<br>ended" );
+				break;
+
+			case "start":
+				insertMessage( "<br>start duration: " + event.duration + " delay: " + event.delay + ", offset: " + event.offset );
+				break;
+
+			case "pause":
+				insertMessage( "<br>pause, offset: " + event.offset );
+				break;
+
+			case "resume":
+				insertMessage( "<br>resume, offset: " + event.offset );
+				break;
+
+			case "stop":
+				insertMessage( "<br>stop" );
+				break;
+		}
+	}
+
+	function onLoad ( event ) {
+		console.log( "load ", event );
+
+		play_sound = new RAIMEI.PlaySoundWithBuffer( event.context, event.buffer );
+		play_sound.addEventListener( "ended", playSoundHandler );
+		play_sound.addEventListener( "start", playSoundHandler );
+		play_sound.addEventListener( "stop", playSoundHandler );
+		play_sound.addEventListener( "pause", playSoundHandler );
+		play_sound.addEventListener( "resume", playSoundHandler );
+
+		btn_start.removeAttribute( "disabled" );
+	}
+
+	function onError ( event ) {
+		console.log( "error", event );
+	}
+
+	if ( WebAudioDetector.detects() ) {
+		message += "has WebAudio API<br>";
+		console.log( window.AudioContext );
+		message += window.AudioContext;
+
+		context = new RAIMEI.Context();
+		audio_context = context.get();
+		console.log( audio_context );
+		message += "<br>";
+		message += audio_context;
+
+		var loader = new RAIMEI.BufferLoader( audio_context, "mp3/chrono.mp3" );
+		loader.addEventListener( "load", onLoad );
+		loader.addEventListener( "error", onError );
+		loader.load();
+	} else {
+		message += "can't use WebAudio API<br>";
+	}
+
+	insertMessage( message );
+
+}( window ) );
+</script>
+</body>
+</html>

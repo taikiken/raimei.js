@@ -22,7 +22,7 @@
     RAIMEI.BufferLoader = ( function (){
         /**
          * @class BufferLoader
-         * @param {AudioContext} context window.AudioContext instance
+         * @param {AudioContext} context AudioContext instance
          * @param {String} url sound file path
          * @constructor
          */
@@ -44,10 +44,13 @@
                 _this = this,
                 request;
 
-            request = new XMLHttpRequest();
-            request.open( "GET", url, true );
-            request.responseType = "arraybuffer";
-            request.onload = function () {
+            function disPose () {
+                request.removeEventListener( "load", onLoad );
+                request.removeEventListener( "error", onError );
+            }
+
+            function onLoad () {
+                disPose();
 
                 context.decodeAudioData(
                     request.response,
@@ -64,12 +67,19 @@
                         _this.dispatchEvent( { type: "error", error: new Error( "decode error: " + url + ", error: " + error ), currentTarget: request } );
                     }
                 );
-            };
+            }
 
-            request.onerror = function () {
+            function onError () {
+                disPose();
+
                 _this.dispatchEvent( { type: "error", error: new Error( "file not found: " + url ), currentTarget: request } );
+            }
 
-            };
+            request = new XMLHttpRequest();
+            request.addEventListener( "load", onLoad, false );
+            request.addEventListener( "error", onError, false );
+            request.open( "GET", url, true );
+            request.responseType = "arraybuffer";
 
             request.send( null );
         };

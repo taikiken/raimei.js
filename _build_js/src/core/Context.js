@@ -39,7 +39,7 @@
 
         /**
          * @method get
-         * @returns {window.AudioContext} window.AudioContext instanceを返します
+         * @returns {AudioContext} AudioContext を返します
          */
         p.get = function () {
             return this._context;

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>RAIMEI Test - 01</title>
 <link rel="stylesheet" href="css/reset.css"/>
+<script type="text/javascript" src="../lib/raimei.detector.min.js"></script>
 <script type="text/javascript" src="../lib/raimei_dev.js"></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
 		message = ""
 	;
 
-	if ( RAIMEI.Detector.detects() ) {
+	if ( WebAudioDetector.detects() ) {
 		message += "has WebAudio API<br>";
 		console.log( window.AudioContext );
 		message += window.AudioContext;

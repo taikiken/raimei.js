@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>PlaySoundWithBuffer - raimei.js API</title>
+    <title>VolumeControl - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -43,6 +43,8 @@
             
                 <li><a href="../classes/BufferLoader.html">BufferLoader</a></li>
             
+                <li><a href="../classes/BufferSource.html">BufferSource</a></li>
+            
                 <li><a href="../classes/Context.html">Context</a></li>
             
                 <li><a href="../classes/Detector.html">Detector</a></li>
@@ -52,6 +54,8 @@
                 <li><a href="../classes/PlaySoundWithBuffer.html">PlaySoundWithBuffer</a></li>
             
                 <li><a href="../classes/RAIMEI.html">RAIMEI</a></li>
+            
+                <li><a href="../classes/VolumeControl.html">VolumeControl</a></li>
             
             </ul>
 
@@ -92,7 +96,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>PlaySoundWithBuffer Class</h1>
+                        <h1>VolumeControl Class</h1>
 <div class="box meta">
     
 
@@ -100,7 +104,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l18"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:18</code></a>
+            Defined in: <a href="../files/src_sound_VolumeControl.js.html#l18"><code>src&#x2F;sound&#x2F;VolumeControl.js:18</code></a>
         </div>
     
 
@@ -118,8 +122,8 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_PlaySoundWithBuffer" class="method item">
-    <h3 class="name"><code>PlaySoundWithBuffer</code></h3>
+        <div id="method_VolumeControl" class="method item">
+    <h3 class="name"><code>VolumeControl</code></h3>
 
     
         <div class="args">
@@ -134,12 +138,6 @@
                 <li class="arg">
                     
                         <code>buffer</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[start_time]</code>
                     
                 </li>
             
@@ -172,7 +170,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l18"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:18</code></a>
+        <a href="../files/src_sound_VolumeControl.js.html#l18"><code>src&#x2F;sound&#x2F;VolumeControl.js:18</code></a>
         
         </p>
 
@@ -201,7 +199,7 @@
                     
 
                     <div class="param-description">
-                        <p>window.AudioContext instance</p>
+                        <p>AudioContext instance</p>
 
                     </div>
 
@@ -218,23 +216,6 @@
 
                     <div class="param-description">
                         <p>AudioBuffer instance</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[start_time]</code>
-                        <span class="type">Number</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>start time optional, default is 0</p>
 
                     </div>
 
@@ -275,22 +256,29 @@
 
                     <ul class="index-list methods">
                         
-                            <li class="index-item method private">
-                                <a href="#method__createSource">_createSource</a>
+                            <li class="index-item method protected">
+                                <a href="#method__normalize">_normalize</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_play">play</a>
+                                <a href="#method_getGain">getGain</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_start">start</a>
+                                <a href="#method_getGainNode">getGainNode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_volume">volume</a>
 
                                 
                                 
@@ -312,8 +300,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method__createSource" class="method item private">
-    <h3 class="name"><code>_createSource</code></h3>
+                    <div id="method__normalize" class="method item protected">
+    <h3 class="name"><code>_normalize</code></h3>
 
     
         <div class="args">
@@ -321,13 +309,7 @@
             
                 <li class="arg">
                     
-                        <code>context</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>buffer</code>
+                        <code>val</code>
                     
                 </li>
             
@@ -337,14 +319,14 @@
 
     
         <span class="returns-inline">
-            <span class="type"></span>
+            <span class="type">Number</span>
         </span>
     
 
     
 
     
-        <span class="flag private">private</span>
+        <span class="flag protected">protected</span>
     
 
     
@@ -366,7 +348,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l54"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:54</code></a>
+        <a href="../files/src_sound_VolumeControl.js.html#l63"><code>src&#x2F;sound&#x2F;VolumeControl.js:63</code></a>
         
         </p>
 
@@ -377,7 +359,8 @@
     </div>
 
     <div class="description">
-        
+        <p>0 ~ 1 範囲に正規化</p>
+
     </div>
 
     
@@ -388,126 +371,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">context</code>
-                        <span class="type">AudioContext</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>window.AudioContext instance</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">buffer</code>
-                        <span class="type">AudioBuffer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>AudioBuffer instance</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"></span>:
-                    
-                    <p>AudioSourceを返します</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_play" class="method item">
-    <h3 class="name"><code>play</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>time</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l45"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:45</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">time</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">val</code>
+                        <span class="type">Object</span>
                     
 
                     
@@ -524,16 +389,184 @@
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>0 ~ 1の数値を返します</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
 
                 
-                    <div id="method_start" class="method item">
-    <h3 class="name"><code>start</code></h3>
+                    <div id="method_getGain" class="method item">
+    <h3 class="name"><code>getGain</code></h3>
 
     
         <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">AudioParam</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_VolumeControl.js.html#l55"><code>src&#x2F;sound&#x2F;VolumeControl.js:55</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">AudioParam</span>:
+                    
+                    <p>GainNode.gain を返します</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getGainNode" class="method item">
+    <h3 class="name"><code>getGainNode</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">GainNode</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_VolumeControl.js.html#l47"><code>src&#x2F;sound&#x2F;VolumeControl.js:47</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">GainNode</span>:
+                    
+                    <p>GainNodeを返します</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_volume" class="method item">
+    <h3 class="name"><code>volume</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>val</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -561,7 +594,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l37"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:37</code></a>
+        <a href="../files/src_sound_VolumeControl.js.html#l36"><code>src&#x2F;sound&#x2F;VolumeControl.js:36</code></a>
         
         </p>
 
@@ -572,9 +605,34 @@
     </div>
 
     <div class="description">
-        
+        <p>Volumeを変更します</p>
+
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">val</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>0 ~ 1</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
