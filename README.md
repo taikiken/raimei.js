@@ -1,4 +1,6 @@
 raimei.js
 =========
 
-private work
+private work for WebAudio API
+
+
