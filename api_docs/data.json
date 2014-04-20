@@ -423,9 +423,9 @@
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
             "line": 108,
-            "description": "Volume を変更します",
+            "description": "volume を変更します",
             "itemtype": "method",
-            "name": "volume",
+            "name": "setVolume",
             "params": [
                 {
                     "name": "val",
@@ -439,6 +439,17 @@
             "file": "src/sound/PlaySoundWithBuffer.js",
             "line": 117,
             "itemtype": "method",
+            "name": "getVolume",
+            "return": {
+                "description": "現在の volume 値を返します",
+                "type": "Number"
+            },
+            "class": "PlaySoundWithBuffer"
+        },
+        {
+            "file": "src/sound/PlaySoundWithBuffer.js",
+            "line": 125,
+            "itemtype": "method",
             "name": "getDuration",
             "return": {
                 "description": "duration（再生時間）を返します",
@@ -448,7 +459,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 125,
+            "line": 133,
             "itemtype": "method",
             "name": "getOffset",
             "return": {
@@ -459,7 +470,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 133,
+            "line": 141,
             "itemtype": "method",
             "name": "getBuffer",
             "return": {
@@ -470,7 +481,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 141,
+            "line": 149,
             "itemtype": "method",
             "name": "getBufferSource",
             "return": {
@@ -481,7 +492,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 149,
+            "line": 157,
             "itemtype": "method",
             "name": "getVolumeControl",
             "return": {
@@ -492,7 +503,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 157,
+            "line": 165,
             "itemtype": "method",
             "name": "getContext",
             "return": {
@@ -503,7 +514,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 165,
+            "line": 173,
             "itemtype": "method",
             "name": "getSource",
             "return": {
@@ -514,7 +525,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 173,
+            "line": 181,
             "description": "ended event handler を削除します",
             "itemtype": "method",
             "name": "_dispose",
@@ -524,7 +535,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 183,
+            "line": 191,
             "description": "再生を止めます",
             "itemtype": "method",
             "name": "_stop",
@@ -534,7 +545,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 200,
+            "line": 208,
             "description": "ended event handler",
             "itemtype": "method",
             "name": "_onEnded",
@@ -544,7 +555,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 213,
+            "line": 221,
             "description": "AudioBufferSourceNode を作成します",
             "itemtype": "method",
             "name": "_createSource",
@@ -577,9 +588,9 @@
         {
             "file": "src/sound/VolumeControl.js",
             "line": 36,
-            "description": "Volumeを変更します",
+            "description": "volumeを変更します",
             "itemtype": "method",
-            "name": "volume",
+            "name": "setVolume",
             "params": [
                 {
                     "name": "val",
@@ -591,7 +602,18 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 47,
+            "line": 45,
+            "itemtype": "method",
+            "name": "getVolume",
+            "return": {
+                "description": "現在の volume 値を返します",
+                "type": "Number"
+            },
+            "class": "VolumeControl"
+        },
+        {
+            "file": "src/sound/VolumeControl.js",
+            "line": 53,
             "itemtype": "method",
             "name": "getGainNode",
             "return": {
@@ -602,7 +624,7 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 55,
+            "line": 61,
             "itemtype": "method",
             "name": "getGain",
             "return": {
@@ -613,7 +635,7 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 63,
+            "line": 69,
             "description": "0 ~ 1 範囲に正規化",
             "itemtype": "method",
             "name": "_normalize",
@@ -767,19 +789,27 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:213"
+            "line": " src/sound/PlaySoundWithBuffer.js:173"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/VolumeControl.js:47"
+            "line": " src/sound/PlaySoundWithBuffer.js:221"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/VolumeControl.js:55"
+            "line": " src/sound/VolumeControl.js:45"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/VolumeControl.js:63"
+            "line": " src/sound/VolumeControl.js:53"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControl.js:61"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControl.js:69"
         },
         {
             "message": "replacing incorrect tag: returns with return",

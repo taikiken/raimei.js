@@ -603,7 +603,12 @@ var RAIMEI = {};
     var RAIMEI = window.RAIMEI;
 
     RAIMEI.VolumeControl = ( function (){
-        // @class VolumeControl
+        /**
+         * @class VolumeControl
+         * @param {AudioContext} context AudioContext instance
+         * @param {AudioBuffer} buffer AudioBuffer instance
+         * @constructor
+         */
         function VolumeControl ( context, source ) {
             var gainNode = context.createGain();
 
@@ -617,14 +622,20 @@ var RAIMEI = {};
         var p = VolumeControl.prototype;
 
         /**
-         * Volumeを変更します
-         * @method volume
+         * volumeを変更します
+         * @method setVolume
          * @param {number} val 0 ~ 1
          */
-        p.volume = function ( val ) {
-            console.log( "VolumeControl ", val );
+        p.setVolume = function ( val ) {
             this._gain.value = this._normalize( val );
-            console.log( "VolumeControl _gain", this._gain );
+        };
+
+        /**
+         * @method getVolume
+         * @returns {number} 現在の volume 値を返します
+         */
+        p.getVolume = function () {
+            return this._gain.value;
         };
 
         /**
@@ -644,9 +655,10 @@ var RAIMEI = {};
         };
 
         /**
+         * 0 ~ 1 範囲に正規化
          * @method _normalize
          * @param val
-         * @returns {*}
+         * @returns {Number} 0 ~ 1の数値を返します
          * @protected
          */
         p._normalize = function ( val ) {
@@ -772,12 +784,20 @@ var RAIMEI = {};
         };
 
         /**
-         * Volume を変更します
-         * @method volume
+         * volume を変更します
+         * @method setVolume
          * @param {Number} val 0 ~ 1
          */
-        p.volume = function ( val ) {
-            this._volumeControl.volume( val );
+        p.setVolume = function ( val ) {
+            this._volumeControl.setVolume( val );
+        };
+
+        /**
+         * @method getVolume
+         * @returns {number} 現在の volume 値を返します
+         */
+        p.getVolume = function () {
+            return this._volumeControl.getVolume();
         };
 
         /**

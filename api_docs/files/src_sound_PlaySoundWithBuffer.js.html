@@ -208,12 +208,20 @@
         };
 
         /**
-         * Volume を変更します
-         * @method volume
+         * volume を変更します
+         * @method setVolume
          * @param {Number} val 0 ~ 1
          */
-        p.volume = function ( val ) {
+        p.setVolume = function ( val ) {
             this._volumeControl.volume( val );
+        };
+
+        /**
+         * @method getVolume
+         * @returns {number} 現在の volume 値を返します
+         */
+        p.getVolume = function () {
+            return this._volumeControl.getVolume();
         };
 
         /**

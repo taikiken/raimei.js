@@ -34,14 +34,20 @@
         var p = VolumeControl.prototype;
 
         /**
-         * Volumeを変更します
-         * @method volume
+         * volumeを変更します
+         * @method setVolume
          * @param {number} val 0 ~ 1
          */
-        p.volume = function ( val ) {
-            console.log( "VolumeControl ", val );
+        p.setVolume = function ( val ) {
             this._gain.value = this._normalize( val );
-            console.log( "VolumeControl _gain", this._gain );
+        };
+
+        /**
+         * @method getVolume
+         * @returns {number} 現在の volume 値を返します
+         */
+        p.getVolume = function () {
+            return this._gain.value;
         };
 
         /**
