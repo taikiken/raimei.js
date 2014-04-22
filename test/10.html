@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>RAIMEI Test - 10</title>
+<link rel="stylesheet" href="css/reset.css"/>
+<script type="text/javascript" src="../lib/raimei.detector.min.js"></script>
+<script type="text/javascript" src="../lib/raimei_dev.js"></script>
+<style type="text/css">
+#sliders label {
+	display: inline-block;
+	margin-right: 3px;
+	width: 5em;
+	text-align: right;
+}
+#sliders input[type="text"] {
+	width: 4em;
+	padding: 3px;
+	border: 1px solid #ccc;
+	text-align: right;
+}
+</style>
+</head>
+<body>
+<h1>PlaySoundWithBuffer - PlaySoundBySine</h1>
+<div id="container"></div>
+<p><button id="button-start">start</button>
+	<button id="button-stop">stop</button></p>
+
+<div id="sliders">
+	<p><label for="volume">Volume: </label><input type="range" min="0" max="400" id="volume" value="320"/><input type="text" id="volume_text"/></p>
+	<p><label for="khz">KHZ: </label><input type="range" min="0" max="1760" id="khz" value="440" step="220"/><input type="text" id="khz_text"/></p>
+	<p><label for="tone">Tone: </label><input type="range" min="-24" max="24" id="tone" value="0" step="1"/><input type="text" id="tone_text"/></p>
+</div>
+<p><button id="button-pause">pause</button></p>
+<p><button id="button-resume">resume</button></p>
+<script type="text/javascript" charset="utf-8">
+( function ( window ){
+	"use strict";
+	var document = window.document,
+		container = document.getElementById( "container" ),
+
+		RAIMEI = window.RAIMEI,
+
+		message = "",
+
+		context,
+		audio_context,
+		play_sound,
+
+		btn_start = document.getElementById( "button-start" ),
+		btn_stop = document.getElementById( "button-stop" ),
+		btn_pause = document.getElementById( "button-pause" ),
+		btn_resume = document.getElementById( "button-resume" ),
+
+		volume_slider = document.getElementById( "volume" ),
+		volume_text = document.getElementById( "volume_text" ),
+		volume = 0.8,
+
+		khz_slider = document.getElementById( "khz" ),
+		khz_text = document.getElementById( "khz_text" ),
+		khz,
+
+		tone_slider = document.getElementById( "tone" ),
+		tone_text = document.getElementById( "tone_text" ),
+		tone
+	;
+
+	function insertMessage ( message ) {
+		container.innerHTML += message;
+	}
+
+//	btn_start.setAttribute( "disabled", "disabled" );
+//	btn_stop.setAttribute( "disabled", "disabled" );
+//	btn_pause.setAttribute( "disabled", "disabled" );
+//	btn_resume.setAttribute( "disabled", "disabled" );
+
+	// start
+	btn_start.addEventListener( "click", function () {
+		play_sound.start();
+//		play_sound.setVolume( volume );
+//
+//		btn_start.setAttribute( "disabled", "disabled" );
+//		btn_stop.removeAttribute( "disabled" );
+//		btn_pause.removeAttribute( "disabled" );
+	}, false );
+
+	// stop
+	btn_stop.addEventListener( "click", function () {
+		play_sound.stop();
+
+//		btn_stop.setAttribute( "disabled", "disabled" );
+//		btn_pause.setAttribute( "disabled", "disabled" );
+//		btn_start.removeAttribute( "disabled" );
+	}, false );
+
+	// pause
+	btn_pause.addEventListener( "click", function () {
+		play_sound.pause();
+
+		btn_start.setAttribute( "disabled", "disabled" );
+		btn_pause.setAttribute( "disabled", "disabled" );
+		btn_stop.removeAttribute( "disabled" );
+		btn_resume.removeAttribute( "disabled" );
+
+
+	}, false );
+
+	// resume
+	btn_resume.addEventListener( "click", function () {
+		play_sound.resume();
+		play_sound.setVolume( volume )
+
+		btn_start.setAttribute( "disabled", "disabled" );
+		btn_resume.setAttribute( "disabled", "disabled" );
+		btn_stop.removeAttribute( "disabled" );
+		btn_pause.removeAttribute( "disabled" );
+	}, false );
+
+	function volumeSliderChange () {
+		var val = volume_slider.value;
+		volume = val / 400;
+
+		volume_text.setAttribute( "value", volume + "" );
+
+//		play_sound && play_sound.setVolume( volume );
+	}
+
+	function khzSliderChange () {
+		khz = khz_slider.value;
+		khz_text.setAttribute( "value", khz + "" );
+	}
+
+	function toneSliderChange () {
+		tone = tone_slider.value;
+		tone_text.setAttribute( "value", tone + "" );
+
+		play_sound && play_sound.setSemitone( tone );
+	}
+
+	volume_slider.addEventListener( "change", volumeSliderChange, false );
+	khz_slider.addEventListener( "change", khzSliderChange, false );
+	tone_slider.addEventListener( "change", toneSliderChange, false );
+
+	function prepareOscillator ( context ) {
+		volumeSliderChange();
+		khzSliderChange();
+		toneSliderChange();
+
+		play_sound = new RAIMEI.PlaySoundBySine( context, parseFloat( tone_text.value ), parseFloat( khz_text.value ) );
+//		play_sound.start();
+	}
+
+	if ( WebAudioDetector.detects() ) {
+		message += "has WebAudio API<br>";
+		console.log( window.AudioContext );
+		message += window.AudioContext;
+
+		context = new RAIMEI.Context();
+		audio_context = context.get();
+		console.log( audio_context );
+		message += "<br>";
+		message += audio_context;
+
+		prepareOscillator( audio_context );
+
+//		var loader = new RAIMEI.BufferLoader( audio_context, "mp3/chrono.mp3" );
+//		loader.addEventListener( "load", onLoad );
+//		loader.addEventListener( "error", onError );
+//		loader.load();
+	} else {
+		message += "can't use WebAudio API<br>";
+	}
+
+	insertMessage( message );
+
+}( window ) );
+</script>
+</body>
+</html>

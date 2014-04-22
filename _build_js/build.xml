@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project default="dev" basedir=".">
 
-    <property name="version" value="0.0.8"/>
+    <property name="version" value="0.0.9"/>
 
     <property name="dist" value="./dist/"/>
     <property name="concat" value="./concat"/>
@@ -45,6 +45,14 @@
             <file name="sound/BufferSource.js"/>
             <file name="sound/VolumeControl.js"/>
             <file name="sound/PlaySoundWithBuffer.js"/>
+
+            <file name="sound/tone/Octave.js"/>
+            <file name="sound/tone/Cents.js"/>
+            <file name="sound/tone/Semitone.js"/>
+
+            <file name="sound/Oscillator.js"/>
+            <file name="sound/PlaySoundWithOscillator.js"/>
+            <file name="sound/PlaySoundBySine.js"/>
 
         </filelist>
 

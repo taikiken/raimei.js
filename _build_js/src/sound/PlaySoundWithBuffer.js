@@ -68,7 +68,7 @@
                 // onendedに関数を設置しないとended eventが発火しない
             };
             source.start( this._context.currentTime + time, offset );
-            this.dispatchEvent( { type: "start", duration: this._duration, delay: time, offset: offset, currentTarget: this._source } );
+            this.dispatchEvent( { type: "play", duration: this._duration, delay: time, offset: offset, currentTarget: this._source } );
             this._source = source;
         };
 

@@ -94,7 +94,7 @@
 				insertMessage( "<br>************************************<br>ended" );
 				break;
 
-			case "start":
+			case "play":
 				insertMessage( "<br>start duration: " + event.duration + " delay: " + event.delay + ", offset: " + event.offset );
 				break;
 
@@ -117,7 +117,7 @@
 
 		play_sound = new RAIMEI.PlaySoundWithBuffer( event.context, event.buffer );
 		play_sound.addEventListener( "ended", playSoundHandler );
-		play_sound.addEventListener( "start", playSoundHandler );
+		play_sound.addEventListener( "play", playSoundHandler );
 		play_sound.addEventListener( "stop", playSoundHandler );
 		play_sound.addEventListener( "pause", playSoundHandler );
 		play_sound.addEventListener( "resume", playSoundHandler );
