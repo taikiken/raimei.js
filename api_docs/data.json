@@ -32,6 +32,33 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sound/tone/Cents.js": {
+            "name": "src/sound/tone/Cents.js",
+            "modules": {},
+            "classes": {
+                "Cents": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sound/tone/Octave.js": {
+            "name": "src/sound/tone/Octave.js",
+            "modules": {},
+            "classes": {
+                "Octave": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sound/tone/Semitone.js": {
+            "name": "src/sound/tone/Semitone.js",
+            "modules": {},
+            "classes": {
+                "Semitone": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sound/BufferSource.js": {
             "name": "src/sound/BufferSource.js",
             "modules": {},
@@ -41,11 +68,38 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sound/Oscillator.js": {
+            "name": "src/sound/Oscillator.js",
+            "modules": {},
+            "classes": {
+                "Oscillator": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sound/PlaySoundBySine.js": {
+            "name": "src/sound/PlaySoundBySine.js",
+            "modules": {},
+            "classes": {
+                "PlaySoundBySine": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sound/PlaySoundWithBuffer.js": {
             "name": "src/sound/PlaySoundWithBuffer.js",
             "modules": {},
             "classes": {
                 "PlaySoundWithBuffer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sound/PlaySoundWithOscillator.js": {
+            "name": "src/sound/PlaySoundWithOscillator.js",
+            "modules": {},
+            "classes": {
+                "PlaySoundWithOscillator": 1
             },
             "fors": {},
             "namespaces": {}
@@ -137,6 +191,56 @@
             ],
             "is_constructor": 1
         },
+        "Cents": {
+            "name": "Cents",
+            "shortname": "Cents",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/sound/tone/Cents.js",
+            "line": 18,
+            "params": [
+                {
+                    "name": "cents",
+                    "description": "0 ~ 100, 100cents === 1semitone, 12semitone === 1octave",
+                    "type": "Int"
+                }
+            ],
+            "is_constructor": 1
+        },
+        "Octave": {
+            "name": "Octave",
+            "shortname": "Octave",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/sound/tone/Octave.js",
+            "line": 18,
+            "is_constructor": 1
+        },
+        "Semitone": {
+            "name": "Semitone",
+            "shortname": "Semitone",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/sound/tone/Semitone.js",
+            "line": 20,
+            "params": [
+                {
+                    "name": "semitone_value",
+                    "description": "semitone",
+                    "type": "Int"
+                }
+            ],
+            "is_constructor": 1
+        },
         "BufferSource": {
             "name": "BufferSource",
             "shortname": "BufferSource",
@@ -158,6 +262,72 @@
                     "name": "buffer",
                     "description": "AudioBuffer instance",
                     "type": "AudioBuffer"
+                }
+            ],
+            "is_constructor": 1
+        },
+        "Oscillator": {
+            "name": "Oscillator",
+            "shortname": "Oscillator",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/sound/Oscillator.js",
+            "line": 18,
+            "description": "oscillator wrapper",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "",
+                    "type": "AudioContext"
+                },
+                {
+                    "name": "semitone",
+                    "description": "-23 ~ 23, (0 ~ 11) is 1 octave",
+                    "type": "Int"
+                },
+                {
+                    "name": "type",
+                    "description": "wave type 0 ~ 4",
+                    "type": "Number"
+                },
+                {
+                    "name": "khz",
+                    "description": "0 ~ ∞",
+                    "type": "Number"
+                }
+            ],
+            "is_constructor": 1
+        },
+        "PlaySoundBySine": {
+            "name": "PlaySoundBySine",
+            "shortname": "PlaySoundBySine",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/sound/PlaySoundBySine.js",
+            "line": 19,
+            "description": "Sine 波再生",
+            "extends": "PlaySoundWithOscillator",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "",
+                    "type": "AudioContext"
+                },
+                {
+                    "name": "semitone_value",
+                    "description": "semitone -23 ~ 23, (0 ~ 11) is 1 octave",
+                    "type": "Int"
+                },
+                {
+                    "name": "khz",
+                    "description": "0 ~ ∞",
+                    "type": "Int"
                 }
             ],
             "is_constructor": 1
@@ -192,6 +362,43 @@
             ],
             "is_constructor": 1
         },
+        "PlaySoundWithOscillator": {
+            "name": "PlaySoundWithOscillator",
+            "shortname": "PlaySoundWithOscillator",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 21,
+            "description": "oscillator を使い再生",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "",
+                    "type": "AudioContext"
+                },
+                {
+                    "name": "semitone_value",
+                    "description": "semitone: -23 ~ 23, (0 ~ 11) is 1 octave",
+                    "type": "Int"
+                },
+                {
+                    "name": "type",
+                    "description": "wave type 0 ~ 4, default is Oscillator.SINE: 0 <br>\nOscillator.SINE: 0<br>\nOscillator.SQUARE: 1<br>\nOscillator.SAWTOOTH: 2<br>\nOscillator.TRIANGLE: 3<br>\nOscillator.CUSTOM: 4",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "khz",
+                    "description": "0 ~ ∞, default is 440",
+                    "type": "Int",
+                    "optional": true
+                }
+            ],
+            "is_constructor": 1
+        },
         "VolumeControl": {
             "name": "VolumeControl",
             "shortname": "VolumeControl",
@@ -209,9 +416,9 @@
                     "type": "AudioContext"
                 },
                 {
-                    "name": "buffer",
-                    "description": "AudioBuffer instance",
-                    "type": "AudioBuffer"
+                    "name": "source",
+                    "description": "AudioBufferSourceNode instance",
+                    "type": "AudioBufferSourceNode"
                 }
             ],
             "is_constructor": 1
@@ -359,6 +566,101 @@
             "class": "BufferLoader"
         },
         {
+            "file": "src/sound/tone/Cents.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 23:03\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "Cents"
+        },
+        {
+            "file": "src/sound/tone/Cents.js",
+            "line": 29,
+            "itemtype": "method",
+            "name": "getCents",
+            "return": {
+                "description": "cents を返します",
+                "type": "Int"
+            },
+            "class": "Cents"
+        },
+        {
+            "file": "src/sound/tone/Cents.js",
+            "line": 37,
+            "description": "cents を設定します",
+            "itemtype": "method",
+            "name": "setCents",
+            "params": [
+                {
+                    "name": "cents",
+                    "description": "0 ~ 100, 100cents === 1semitone, 12semitone === 1octave",
+                    "type": "Int"
+                }
+            ],
+            "class": "Cents"
+        },
+        {
+            "file": "src/sound/tone/Octave.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 23:15\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "Octave"
+        },
+        {
+            "file": "src/sound/tone/Octave.js",
+            "line": 26,
+            "description": "1オクターブ定数",
+            "itemtype": "property",
+            "name": "OCTAVE",
+            "final": "",
+            "type": "{number}",
+            "class": "Octave"
+        },
+        {
+            "file": "src/sound/tone/Semitone.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 23:08\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "Semitone"
+        },
+        {
+            "file": "src/sound/tone/Semitone.js",
+            "line": 34,
+            "itemtype": "method",
+            "name": "getSemitone",
+            "return": {
+                "description": "現在の semitone を返します",
+                "type": "Number"
+            },
+            "class": "Semitone"
+        },
+        {
+            "file": "src/sound/tone/Semitone.js",
+            "line": 42,
+            "description": "semitone を設定します。\n<br>centsを計算し detune.value へ設定します",
+            "itemtype": "method",
+            "name": "setSemitone",
+            "params": [
+                {
+                    "name": "semitone_value",
+                    "description": "",
+                    "type": "Semitone"
+                }
+            ],
+            "class": "Semitone"
+        },
+        {
+            "file": "src/sound/tone/Semitone.js",
+            "line": 53,
+            "description": "オクターブ上下させます",
+            "itemtype": "method",
+            "name": "shiftOctave",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "整数値 -2 ~ 2",
+                    "type": "Int"
+                }
+            ],
+            "class": "Semitone"
+        },
+        {
             "file": "src/sound/BufferSource.js",
             "line": 1,
             "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/20 - 18:35\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
@@ -374,6 +676,126 @@
                 "type": "AudioBufferSourceNode"
             },
             "class": "BufferSource"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/21 - 22:33\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 44,
+            "description": "wave type sine(0) です",
+            "itemtype": "property",
+            "name": "SINE",
+            "final": "",
+            "type": "{number}",
+            "static": 1,
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 51,
+            "description": "wave type square(0) です",
+            "itemtype": "property",
+            "name": "SQUARE",
+            "final": "",
+            "type": "{number}",
+            "static": 1,
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 58,
+            "description": "wave type sawtooth(2) です",
+            "itemtype": "property",
+            "name": "SAWTOOTH",
+            "final": "",
+            "type": "{number}",
+            "static": 1,
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 65,
+            "description": "wave type triangle(3) です",
+            "itemtype": "property",
+            "name": "TRIANGLE",
+            "final": "",
+            "type": "{number}",
+            "static": 1,
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 72,
+            "description": "wave type custom(4) です",
+            "itemtype": "property",
+            "name": "CUSTOM",
+            "final": "",
+            "type": "{number}",
+            "static": 1,
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 82,
+            "itemtype": "method",
+            "name": "getOscillator",
+            "return": {
+                "description": "OscillatorNode を返します",
+                "type": "OscillatorNode"
+            },
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 90,
+            "description": "khz を設定します",
+            "itemtype": "method",
+            "name": "setFrequency",
+            "params": [
+                {
+                    "name": "khz",
+                    "description": ""
+                }
+            ],
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 99,
+            "description": "semitone 値を元に cents を計算し detune.value へ設定します",
+            "itemtype": "method",
+            "name": "setSemitone",
+            "params": [
+                {
+                    "name": "semitone_value",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/Oscillator.js",
+            "line": 114,
+            "description": "wave type を設定します",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "wave type",
+                    "type": "Number"
+                }
+            ],
+            "class": "Oscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundBySine.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 21:26\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "PlaySoundBySine"
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
@@ -549,7 +971,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 191,
+            "line": 192,
             "description": "再生を止めます",
             "itemtype": "method",
             "name": "_stop",
@@ -559,7 +981,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 208,
+            "line": 209,
             "description": "ended event handler",
             "itemtype": "method",
             "name": "_onEnded",
@@ -569,7 +991,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 221,
+            "line": 222,
             "description": "AudioBufferSourceNode を作成します",
             "itemtype": "method",
             "name": "_createSource",
@@ -592,6 +1014,12 @@
             "access": "private",
             "tagname": "",
             "class": "PlaySoundWithBuffer"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/21 - 22:27\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "PlaySoundWithOscillator"
         },
         {
             "file": "src/sound/VolumeControl.js",
@@ -783,7 +1211,19 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/tone/Cents.js:29"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/tone/Semitone.js:34"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
             "line": " src/sound/BufferSource.js:39"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/Oscillator.js:82"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -819,7 +1259,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:221"
+            "line": " src/sound/PlaySoundWithBuffer.js:222"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -882,12 +1322,40 @@
             "line": " src/net/BufferLoader.js:1"
         },
         {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 23:03\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/tone/Cents.js:1"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 23:15\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/tone/Octave.js:1"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 23:08\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/tone/Semitone.js:1"
+        },
+        {
             "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/20 - 18:35\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
             "line": " src/sound/BufferSource.js:1"
         },
         {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/21 - 22:33\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/Oscillator.js:1"
+        },
+        {
+            "message": "Missing item type\nwave type を設定します",
+            "line": " src/sound/Oscillator.js:114"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 21:26\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/PlaySoundBySine.js:1"
+        },
+        {
             "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 19:21\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
             "line": " src/sound/PlaySoundWithBuffer.js:1"
+        },
+        {
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/21 - 22:27\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/PlaySoundWithOscillator.js:1"
         },
         {
             "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/20 - 18:26\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",

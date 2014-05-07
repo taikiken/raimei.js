@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/util/Detector.js - raimei.js API</title>
+    <title>src/sound/tone/Semitone.js - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,14 +110,14 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/util/Detector.js</h1>
+                        <h1 class="file-heading">File: src/sound/tone/Semitone.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
  * license inazumatv.com
  * author (at)taikiken / http://inazumatv.com
- * date 2014/04/19 - 17:09
+ * date 2014/04/22 - 23:08
  *
  * Copyright (c) 2011-2014 inazumatv.com, inc.
  *
@@ -128,27 +128,64 @@
  */
 ( function ( window ){
     &quot;use strict&quot;;
-    var RAIMEI = window.RAIMEI;
+    var RAIMEI = window.RAIMEI,
+        Cents = RAIMEI.Cents,
+        Octave = RAIMEI.Octave;
 
-    RAIMEI.Detector = ( function (){
+    RAIMEI.Semitone = ( function (){
         /**
-         * @class Detector
+         * @class Semitone
+         * @param {int} semitone_value semitone
          * @constructor
          */
-        function Detector () {
-            throw new Error( &quot;can&#x27;t create instance&quot; );
+        function Semitone ( semitone_value ) {
+            Cents.call( this, semitone_value * 100 );
+            this._semitone_value = semitone_value;
         }
 
+        RAIMEI.extend( Cents, Semitone );
+
+        var p = Semitone.prototype;
+
         /**
-         * @method detects
-         * @returns {boolean}
-         * @static
+         * @method getSemitone
+         * @returns {number} 現在の semitone を返します
          */
-        Detector.detects = function () {
-            return !!window.AudioContext;
+        p.getSemitone = function () {
+            return this._semitone_value;
         };
 
-        return Detector;
+        /**
+         * semitone を設定します。
+         * &lt;br&gt;centsを計算し detune.value へ設定します
+         * @method setSemitone
+         * @param {semitone} semitone_value
+         */
+        p.setSemitone = function ( semitone_value ) {
+            this._semitone_value = semitone_value;
+            this.setCents( semitone_value * 100 );
+        };
+
+        /**
+         * オクターブ上下させます
+         * @method shiftOctave
+         * @param {int} n 整数値 -2 ~ 2
+         */
+        p.shiftOctave = function ( n ) {
+            n = parseInt( n, 10 ) || 1;
+
+            if ( n &gt; 2 ) {
+                n = 2;
+            } else if ( n &lt; -2 ) {
+                n = -2;
+            }
+
+            var val = n * Octave.OCTAVE;
+
+            this.setSemitone( this._semitone_value + val );
+        };
+
+        return Semitone;
     }() );
 
 }( window ) );

@@ -15,10 +15,19 @@
     var RAIMEI = window.RAIMEI;
 
     RAIMEI.Octave = ( function (){
-        // @class Octave
+        /**
+         * @class Octave
+         * @constructor
+         */
         function Octave () {
+            throw new Error( "can't create instance" );
         }
 
+        /**
+         * 1オクターブ定数
+         * @const OCTAVE
+         * @type {number}
+         */
         Octave.OCTAVE = 1200;//12 * 100;
 
         return Octave;

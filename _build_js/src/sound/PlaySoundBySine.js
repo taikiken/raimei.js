@@ -16,9 +16,17 @@
         PlaySoundWithOscillator = RAIMEI.PlaySoundWithOscillator;
 
     RAIMEI.PlaySoundBySine = ( function (){
-        // @class PlaySoundBySine
-        function PlaySoundBySine ( context, tone, khz ) {
-            PlaySoundWithOscillator.call( this, context, tone, RAIMEI.Oscillator.SINE, khz );
+        /**
+         * Sine 波再生
+         * @class PlaySoundBySine
+         * @extends PlaySoundWithOscillator
+         * @param {AudioContext} context
+         * @param {int} semitone_value semitone -23 ~ 23, (0 ~ 11) is 1 octave
+         * @param {int} khz 0 ~ ∞
+         * @constructor
+         */
+        function PlaySoundBySine ( context, semitone_value, khz ) {
+            PlaySoundWithOscillator.call( this, context, semitone_value, RAIMEI.Oscillator.SINE, khz );
         }
 
         RAIMEI.extend( PlaySoundWithOscillator, PlaySoundBySine );

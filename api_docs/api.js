@@ -3,11 +3,17 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "BufferLoader",
         "BufferSource",
+        "Cents",
         "Context",
         "Detector",
         "EventDispatcher",
+        "Octave",
+        "Oscillator",
+        "PlaySoundBySine",
         "PlaySoundWithBuffer",
+        "PlaySoundWithOscillator",
         "RAIMEI",
+        "Semitone",
         "VolumeControl",
         "WebAudioDetector"
     ],

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/util/Detector.js - raimei.js API</title>
+    <title>src/sound/PlaySoundBySine.js - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,14 +110,14 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/util/Detector.js</h1>
+                        <h1 class="file-heading">File: src/sound/PlaySoundBySine.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
  * license inazumatv.com
  * author (at)taikiken / http://inazumatv.com
- * date 2014/04/19 - 17:09
+ * date 2014/04/22 - 21:26
  *
  * Copyright (c) 2011-2014 inazumatv.com, inc.
  *
@@ -128,29 +128,30 @@
  */
 ( function ( window ){
     &quot;use strict&quot;;
-    var RAIMEI = window.RAIMEI;
+    var RAIMEI = window.RAIMEI,
+        PlaySoundWithOscillator = RAIMEI.PlaySoundWithOscillator;
 
-    RAIMEI.Detector = ( function (){
+    RAIMEI.PlaySoundBySine = ( function (){
         /**
-         * @class Detector
+         * Sine 波再生
+         * @class PlaySoundBySine
+         * @extends PlaySoundWithOscillator
+         * @param {AudioContext} context
+         * @param {int} semitone_value semitone -23 ~ 23, (0 ~ 11) is 1 octave
+         * @param {int} khz 0 ~ ∞
          * @constructor
          */
-        function Detector () {
-            throw new Error( &quot;can&#x27;t create instance&quot; );
+        function PlaySoundBySine ( context, semitone_value, khz ) {
+            PlaySoundWithOscillator.call( this, context, semitone_value, RAIMEI.Oscillator.SINE, khz );
         }
 
-        /**
-         * @method detects
-         * @returns {boolean}
-         * @static
-         */
-        Detector.detects = function () {
-            return !!window.AudioContext;
-        };
+        RAIMEI.extend( PlaySoundWithOscillator, PlaySoundBySine );
 
-        return Detector;
+        var p = PlaySoundBySine.prototype;
+
+
+        return PlaySoundBySine;
     }() );
-
 }( window ) );
     </pre>
 </div>

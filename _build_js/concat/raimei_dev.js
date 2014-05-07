@@ -606,7 +606,7 @@ var RAIMEI = {};
         /**
          * @class VolumeControl
          * @param {AudioContext} context AudioContext instance
-         * @param {AudioBuffer} buffer AudioBuffer instance
+         * @param {AudioBufferSourceNode} source AudioBufferSourceNode instance
          * @constructor
          */
         function VolumeControl ( context, source ) {
@@ -662,6 +662,7 @@ var RAIMEI = {};
          * @protected
          */
         p._normalize = function ( val ) {
+            val = parseFloat( val );
             // 0 to 1
             if ( val < 0 ) {
                 val = 0;
@@ -939,10 +940,19 @@ var RAIMEI = {};
     var RAIMEI = window.RAIMEI;
 
     RAIMEI.Octave = ( function (){
-        // @class Octave
+        /**
+         * @class Octave
+         * @constructor
+         */
         function Octave () {
+            throw new Error( "can't create instance" );
         }
 
+        /**
+         * 1オクターブ定数
+         * @const OCTAVE
+         * @type {number}
+         */
         Octave.OCTAVE = 1200;//12 * 100;
 
         return Octave;
@@ -1016,25 +1026,44 @@ var RAIMEI = {};
         Octave = RAIMEI.Octave;
 
     RAIMEI.Semitone = ( function (){
-        // @class Semitone
-        function Semitone ( semitone ) {
-            Cents.call( this, semitone * 100 );
-            this._semitone_value = semitone;
+        /**
+         * @class Semitone
+         * @param {int} semitone_value semitone
+         * @constructor
+         */
+        function Semitone ( semitone_value ) {
+            Cents.call( this, semitone_value * 100 );
+            this._semitone_value = semitone_value;
         }
 
         RAIMEI.extend( Cents, Semitone );
 
         var p = Semitone.prototype;
 
+        /**
+         * @method getSemitone
+         * @returns {number} 現在の semitone を返します
+         */
         p.getSemitone = function () {
             return this._semitone_value;
         };
 
-        p.setSemitone = function ( semitone ) {
-            this._semitone_value = semitone;
-            this.setCents( semitone * 100 );
+        /**
+         * semitone を設定します。
+         * <br>centsを計算し detune.value へ設定します
+         * @method setSemitone
+         * @param {semitone} semitone_value
+         */
+        p.setSemitone = function ( semitone_value ) {
+            this._semitone_value = semitone_value;
+            this.setCents( semitone_value * 100 );
         };
 
+        /**
+         * オクターブ上下させます
+         * @method shiftOctave
+         * @param {int} n 整数値 -2 ~ 2
+         */
         p.shiftOctave = function ( n ) {
             n = parseInt( n, 10 ) || 1;
 
@@ -1056,6 +1085,96 @@ var RAIMEI = {};
 /**
  * license inazumatv.com
  * author (at)taikiken / http://inazumatv.com
+ * date 2014/04/24 - 0:12
+ *
+ * Copyright (c) 2011-2014 inazumatv.com, inc.
+ *
+ * Distributed under the terms of the MIT license.
+ * http://www.opensource.org/licenses/mit-license.html
+ *
+ * This notice shall be included in all copies or substantial portions of the Software.
+ */
+( function ( window ){
+    "use strict";
+    var RAIMEI = window.RAIMEI;
+
+    RAIMEI.VolumeControlWithOscillator = ( function (){
+        /**
+         * @class VolumeControlWithOscillator
+         * @param {AudioContext} context AudioContext instance
+         * @param {OscillatorNode} oscillator_node
+         * @constructor
+         */
+        function VolumeControlWithOscillator ( context, oscillator_node ) {
+            var gainNode = context.createGain();
+
+            oscillator_node.connect( gainNode );
+            gainNode.connect( context.destination );
+
+            this._gainNode = gainNode;
+            this._gain = gainNode.gain;
+        }
+
+        var p = VolumeControlWithOscillator.prototype;
+
+        /**
+         * volumeを変更します
+         * @method setVolume
+         * @param {number} val 0 ~ 1
+         */
+        p.setVolume = function ( val ) {
+            this._gain.value = this._normalize( val );
+        };
+
+        /**
+         * @method getVolume
+         * @returns {number} 現在の volume 値を返します
+         */
+        p.getVolume = function () {
+            return this._gain.value;
+        };
+
+        /**
+         * @method getGainNode
+         * @returns {GainNode} GainNodeを返します
+         */
+        p.getGainNode = function () {
+            return this._gainNode;
+        };
+
+        /**
+         * @method getGain
+         * @returns {AudioParam} GainNode.gain を返します
+         */
+        p.getGain = function () {
+            return this._gain;
+        };
+
+        /**
+         * 0 ~ 1 範囲に正規化
+         * @method _normalize
+         * @param val
+         * @returns {Number} 0 ~ 1の数値を返します
+         * @protected
+         */
+        p._normalize = function ( val ) {
+            val = parseFloat( val );
+            // 0 to 1
+            if ( val < 0 ) {
+                val = 0;
+            } else if ( val > 1 ) {
+                val = 1;
+            }
+
+            return val;
+        };
+
+        return VolumeControlWithOscillator;
+    }() );
+}( window ) );
+/**
+ * license inazumatv.com
+ * author (at)taikiken / http://inazumatv.com
  * date 2014/04/21 - 22:33
  *
  * Copyright (c) 2011-2014 inazumatv.com, inc.
@@ -1070,14 +1189,22 @@ var RAIMEI = {};
     var RAIMEI = window.RAIMEI;
 
     RAIMEI.Oscillator = ( function (){
-        // @class Oscillator
+        /**
+         * oscillator wrapper
+         * @class Oscillator
+         * @param {AudioContext} context
+         * @param {int} semitone -23 ~ 23, (0 ~ 11) is 1 octave
+         * @param {number} type wave type 0 ~ 4
+         * @param {number} khz 0 ~ ∞
+         * @constructor
+         */
         function Oscillator ( context, semitone, type, khz ) {
             var oscillator = context.createOscillator(),
                 sem = new RAIMEI.Semitone( semitone );
 
             this._semitone = sem;
 
-            oscillator.connect( context.destination );
+//            oscillator.connect( context.destination );
             oscillator.frequency.value = khz;
             oscillator.detune.value = sem.getCents();
             oscillator.type = type;
@@ -1088,31 +1215,80 @@ var RAIMEI = {};
             this._oscillator_node = oscillator;
         }
 
+        /**
+         * wave type sine(0) です
+         * @const SINE
+         * @type {number}
+         * @static
+         */
         Oscillator.SINE = 0;
+        /**
+         * wave type square(0) です
+         * @const SQUARE
+         * @type {number}
+         * @static
+         */
         Oscillator.SQUARE = 1;
+        /**
+         * wave type sawtooth(2) です
+         * @const SAWTOOTH
+         * @type {number}
+         * @static
+         */
         Oscillator.SAWTOOTH = 2;
+        /**
+         * wave type triangle(3) です
+         * @const TRIANGLE
+         * @type {number}
+         * @static
+         */
         Oscillator.TRIANGLE = 3;
+        /**
+         * wave type custom(4) です
+         * @const CUSTOM
+         * @type {number}
+         * @static
+         */
+        Oscillator.CUSTOM = 4;
 
         var p = Oscillator.prototype;
 
+        /**
+         * @method getOscillator
+         * @returns {OscillatorNode} OscillatorNode を返します
+         */
         p.getOscillator = function () {
             return this._oscillator_node;
         };
 
+        /**
+         * khz を設定します
+         * @method setFrequency
+         * @param khz
+         */
         p.setFrequency = function ( khz ) {
             this._oscillator_node.frequency.value = khz;
         };
 
-        p.setSemitone = function ( tone ) {
+        /**
+         * semitone 値を元に cents を計算し detune.value へ設定します
+         * @method setSemitone
+         * @param {number} semitone_value
+         */
+        p.setSemitone = function ( semitone_value ) {
             // semitone(半音)
             // 100Cents === 1semitone
             // 12semitone === 1octave
             var semitone = this._semitone;
-            semitone.setSemitone( tone );
+            semitone.setSemitone( semitone_value );
 
             this._oscillator_node.detune.value = semitone.getCents();
         };
 
+        /**
+         * wave type を設定します
+         * @param {number} type wave type
+         */
         p.setType = function ( type ) {
             this._oscillator_node.type = type;
         };
@@ -1136,15 +1312,31 @@ var RAIMEI = {};
     "use strict";
     var RAIMEI = window.RAIMEI,
         EventDispatcher = RAIMEI.EventDispatcher,
-        isNumeric = RAIMEI.isNumeric;
+        isNumeric = RAIMEI.isNumeric,
+        Oscillator = RAIMEI.Oscillator;
 
     RAIMEI.PlaySoundWithOscillator = ( function (){
-        // @class PlaySoundWithOscillator
-        function PlaySoundWithOscillator ( context, semitone, type, khz ) {
+        /**
+         * oscillator を使い再生
+         * @class PlaySoundWithOscillator
+         *
+         * @param {AudioContext} context
+         * @param {int} semitone_value semitone: -23 ~ 23, (0 ~ 11) is 1 octave
+         * @param {number} [type] wave type 0 ~ 4, default is Oscillator.SINE: 0 <br>
+         * Oscillator.SINE: 0<br>
+         * Oscillator.SQUARE: 1<br>
+         * Oscillator.SAWTOOTH: 2<br>
+         * Oscillator.TRIANGLE: 3<br>
+         * Oscillator.CUSTOM: 4
+         *
+         * @param {int} [khz] 0 ~ ∞, default is 440
+         * @constructor
+         */
+        function PlaySoundWithOscillator ( context, semitone_value, type, khz ) {
             this._context = context;
-            this._semitone_value = semitone;
-            this._type = isNumeric( type ) ? type : RAIMEI.Oscillator.SINE;
-            this._khz = isNumeric( khz ) ? khz : 440;
+            this._semitone_value = parseInt( semitone_value, 10 );
+            this._type = isNumeric( type ) ? type : Oscillator.SINE;
+            this._khz = isNumeric( khz ) ? Math.abs( khz ) : 440;
         }
 
         var p = PlaySoundWithOscillator.prototype;
@@ -1168,6 +1360,9 @@ var RAIMEI = {};
             oscillator = new RAIMEI.Oscillator( context, semitone_value, type, khz );
             oscillator_node = oscillator.getOscillator();
 
+            var volume_control = new RAIMEI.VolumeControlWithOscillator( context, oscillator_node );
+            volume_control.setVolume( 1 );
+
             this._oscillator_node = oscillator_node;
             this._oscillator = oscillator;
             oscillator_node.start( time );
@@ -1175,7 +1370,8 @@ var RAIMEI = {};
         };
 
         p.stop = function () {
-            this._oscillator_node.stop();
+            this._oscillator_node.stop( 0 );
+            this.dispatchEvent( { type: "stop", delay: 0, khz: this._khz, semitone: this._semitone_value, wave: this._type, currentTarget: this } );
         };
 
         p.getOscillator = function () {
@@ -1195,6 +1391,7 @@ var RAIMEI = {};
         };
 
         p.setKHZ = function ( khz ) {
+            this._oscillator&&this._oscillator.setFrequency( khz );
             this._khz = khz;
         };
 
@@ -1202,9 +1399,9 @@ var RAIMEI = {};
             return this._semitone_value;
         };
 
-        p.setSemitone = function ( semitone ) {
-            this._oscillator.setSemitone( semitone )
-            this._semitone_value = semitone;
+        p.setSemitone = function ( semitone_value ) {
+            this._oscillator&&this._oscillator.setSemitone( semitone_value );
+            this._semitone_value = semitone_value;
         };
 
         return PlaySoundWithOscillator;
@@ -1228,9 +1425,17 @@ var RAIMEI = {};
         PlaySoundWithOscillator = RAIMEI.PlaySoundWithOscillator;
 
     RAIMEI.PlaySoundBySine = ( function (){
-        // @class PlaySoundBySine
-        function PlaySoundBySine ( context, tone, khz ) {
-            PlaySoundWithOscillator.call( this, context, tone, RAIMEI.Oscillator.SINE, khz );
+        /**
+         * Sine 波再生
+         * @class PlaySoundBySine
+         * @extends PlaySoundWithOscillator
+         * @param {AudioContext} context
+         * @param {int} semitone_value semitone -23 ~ 23, (0 ~ 11) is 1 octave
+         * @param {int} khz 0 ~ ∞
+         * @constructor
+         */
+        function PlaySoundBySine ( context, semitone_value, khz ) {
+            PlaySoundWithOscillator.call( this, context, semitone_value, RAIMEI.Oscillator.SINE, khz );
         }
 
         RAIMEI.extend( PlaySoundWithOscillator, PlaySoundBySine );

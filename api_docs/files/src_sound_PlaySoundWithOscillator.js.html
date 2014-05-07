@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/util/Detector.js - raimei.js API</title>
+    <title>src/sound/PlaySoundWithOscillator.js - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,14 +110,14 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/util/Detector.js</h1>
+                        <h1 class="file-heading">File: src/sound/PlaySoundWithOscillator.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
  * license inazumatv.com
  * author (at)taikiken / http://inazumatv.com
- * date 2014/04/19 - 17:09
+ * date 2014/04/21 - 22:27
  *
  * Copyright (c) 2011-2014 inazumatv.com, inc.
  *
@@ -128,29 +128,98 @@
  */
 ( function ( window ){
     &quot;use strict&quot;;
-    var RAIMEI = window.RAIMEI;
+    var RAIMEI = window.RAIMEI,
+        EventDispatcher = RAIMEI.EventDispatcher,
+        isNumeric = RAIMEI.isNumeric,
+        Oscillator = RAIMEI.Oscillator;
 
-    RAIMEI.Detector = ( function (){
+    RAIMEI.PlaySoundWithOscillator = ( function (){
         /**
-         * @class Detector
+         * oscillator を使い再生
+         * @class PlaySoundWithOscillator
+         *
+         * @param {AudioContext} context
+         * @param {int} semitone_value semitone: -23 ~ 23, (0 ~ 11) is 1 octave
+         * @param {number} [type] wave type 0 ~ 4, default is Oscillator.SINE: 0 &lt;br&gt;
+         * Oscillator.SINE: 0&lt;br&gt;
+         * Oscillator.SQUARE: 1&lt;br&gt;
+         * Oscillator.SAWTOOTH: 2&lt;br&gt;
+         * Oscillator.TRIANGLE: 3&lt;br&gt;
+         * Oscillator.CUSTOM: 4
+         *
+         * @param {int} [khz] 0 ~ ∞, default is 440
          * @constructor
          */
-        function Detector () {
-            throw new Error( &quot;can&#x27;t create instance&quot; );
+        function PlaySoundWithOscillator ( context, semitone_value, type, khz ) {
+            this._context = context;
+            this._semitone_value = parseInt( semitone_value, 10 );
+            this._type = isNumeric( type ) ? type : Oscillator.SINE;
+            this._khz = isNumeric( khz ) ? Math.abs( khz ) : 440;
         }
 
-        /**
-         * @method detects
-         * @returns {boolean}
-         * @static
-         */
-        Detector.detects = function () {
-            return !!window.AudioContext;
+        var p = PlaySoundWithOscillator.prototype;
+
+        EventDispatcher.initialize( p );
+
+        p.start = function () {
+            this.play( 0 );
+            this.dispatchEvent( { type: &quot;start&quot;, delay: 0, khz: this._khz, semitone: this._semitone_value, wave: this._type, currentTarget: this } );
         };
 
-        return Detector;
-    }() );
+        p.play = function ( time ) {
+            var context = this._context,
+                semitone_value = this._semitone_value,
+                type = this._type,
+                khz = this._khz,
 
+                oscillator,
+                oscillator_node;
+
+            oscillator = new RAIMEI.Oscillator( context, semitone_value, type, khz );
+            oscillator_node = oscillator.getOscillator();
+
+            this._oscillator_node = oscillator_node;
+            this._oscillator = oscillator;
+            oscillator_node.start( time );
+            this.dispatchEvent( { type: &quot;play&quot;, delay: time, khz: khz, semitone: semitone_value, wave: type, currentTarget: oscillator_node } );
+        };
+
+        p.stop = function () {
+            this._oscillator_node.stop( 0 );
+            this.dispatchEvent( { type: &quot;stop&quot;, delay: 0, khz: this._khz, semitone: this._semitone_value, wave: this._type, currentTarget: this } );
+        };
+
+        p.getOscillator = function () {
+            return this._oscillator_node;
+        };
+
+        p.getType = function () {
+            return this._type;
+        };
+
+        p.setType = function ( type ) {
+            this._type = type;
+        };
+
+        p.getKHZ = function () {
+            return this._khz;
+        };
+
+        p.setKHZ = function ( khz ) {
+            this._khz = khz;
+        };
+
+        p.getSemitone = function () {
+            return this._semitone_value;
+        };
+
+        p.setSemitone = function ( semitone_value ) {
+            this._oscillator.setSemitone( semitone_value );
+            this._semitone_value = semitone_value;
+        };
+
+        return PlaySoundWithOscillator;
+    }() );
 }( window ) );
     </pre>
 </div>

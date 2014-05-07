@@ -45,15 +45,27 @@
             
                 <li><a href="../classes/BufferSource.html">BufferSource</a></li>
             
+                <li><a href="../classes/Cents.html">Cents</a></li>
+            
                 <li><a href="../classes/Context.html">Context</a></li>
             
                 <li><a href="../classes/Detector.html">Detector</a></li>
             
                 <li><a href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a href="../classes/Octave.html">Octave</a></li>
+            
+                <li><a href="../classes/Oscillator.html">Oscillator</a></li>
+            
+                <li><a href="../classes/PlaySoundBySine.html">PlaySoundBySine</a></li>
+            
                 <li><a href="../classes/PlaySoundWithBuffer.html">PlaySoundWithBuffer</a></li>
             
+                <li><a href="../classes/PlaySoundWithOscillator.html">PlaySoundWithOscillator</a></li>
+            
                 <li><a href="../classes/RAIMEI.html">RAIMEI</a></li>
+            
+                <li><a href="../classes/Semitone.html">Semitone</a></li>
             
                 <li><a href="../classes/VolumeControl.html">VolumeControl</a></li>
             
@@ -172,7 +184,7 @@
                 // onendedに関数を設置しないとended eventが発火しない
             };
             source.start( this._context.currentTime + time, offset );
-            this.dispatchEvent( { type: &quot;start&quot;, duration: this._duration, delay: time, offset: offset, currentTarget: this._source } );
+            this.dispatchEvent( { type: &quot;play&quot;, duration: this._duration, delay: time, offset: offset, currentTarget: this._source } );
             this._source = source;
         };
 
@@ -290,6 +302,7 @@
         p._dispose = function () {
             var source = this._source;
             source.removeEventListener( &quot;ended&quot;, this._boundEnded );
+            source = null;
         };
 
         /**

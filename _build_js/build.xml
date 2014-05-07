@@ -50,6 +50,7 @@
             <file name="sound/tone/Cents.js"/>
             <file name="sound/tone/Semitone.js"/>
 
+            <file name="sound/VolumeControlWithOscillator.js"/>
             <file name="sound/Oscillator.js"/>
             <file name="sound/PlaySoundWithOscillator.js"/>
             <file name="sound/PlaySoundBySine.js"/>

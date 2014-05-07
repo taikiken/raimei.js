@@ -30,7 +30,7 @@
 <div id="sliders">
 	<p><label for="volume">Volume: </label><input type="range" min="0" max="400" id="volume" value="320"/><input type="text" id="volume_text"/></p>
 	<p><label for="khz">KHZ: </label><input type="range" min="0" max="1760" id="khz" value="440" step="220"/><input type="text" id="khz_text"/></p>
-	<p><label for="tone">Tone: </label><input type="range" min="-24" max="24" id="tone" value="0" step="1"/><input type="text" id="tone_text"/></p>
+	<p><label for="tone">Tone: </label><input type="range" min="-23" max="59" id="tone" value="0" step="1"/><input type="text" id="tone_text"/><input type="text" id="tone_name"/></p>
 </div>
 <p><button id="button-pause">pause</button></p>
 <p><button id="button-resume">resume</button></p>
@@ -63,6 +63,7 @@
 
 		tone_slider = document.getElementById( "tone" ),
 		tone_text = document.getElementById( "tone_text" ),
+		tone_name = document.getElementById( "tone_name" ),
 		tone
 	;
 
@@ -129,13 +130,22 @@
 	function khzSliderChange () {
 		khz = khz_slider.value;
 		khz_text.setAttribute( "value", khz + "" );
+
+		play_sound && play_sound.setKHZ( khz );
 	}
 
 	function toneSliderChange () {
-		tone = tone_slider.value;
+		var tones = [ "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" ],
+			alt_tone;
+		tone = parseInt( tone_slider.value, 10 );
 		tone_text.setAttribute( "value", tone + "" );
 
 		play_sound && play_sound.setSemitone( tone );
+
+//		alt_tone = Math.abs( tone ) + 12;
+		alt_tone = tone + 36;
+//		console.log( tone, alt_tone, alt_tone % 12 );
+		tone_name.setAttribute( "value", tones[ Math.abs( alt_tone % 12 ) ] );
 	}
 
 	volume_slider.addEventListener( "change", volumeSliderChange, false );

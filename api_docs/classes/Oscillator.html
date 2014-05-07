@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>VolumeControl - raimei.js API</title>
+    <title>Oscillator - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,7 +110,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>VolumeControl Class</h1>
+                        <h1>Oscillator Class</h1>
 <div class="box meta">
     
 
@@ -118,7 +118,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_sound_VolumeControl.js.html#l18"><code>src&#x2F;sound&#x2F;VolumeControl.js:18</code></a>
+            Defined in: <a href="../files/src_sound_Oscillator.js.html#l18"><code>src&#x2F;sound&#x2F;Oscillator.js:18</code></a>
         </div>
     
 
@@ -130,14 +130,15 @@
 
 
 <div class="box intro">
-    
+    <p>oscillator wrapper</p>
+
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_VolumeControl" class="method item">
-    <h3 class="name"><code>VolumeControl</code></h3>
+        <div id="method_Oscillator" class="method item">
+    <h3 class="name"><code>Oscillator</code></h3>
 
     
         <div class="args">
@@ -151,7 +152,19 @@
             
                 <li class="arg">
                     
-                        <code>source</code>
+                        <code>semitone</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>khz</code>
                     
                 </li>
             
@@ -184,7 +197,7 @@
             
         
         
-        <a href="../files/src_sound_VolumeControl.js.html#l18"><code>src&#x2F;sound&#x2F;VolumeControl.js:18</code></a>
+        <a href="../files/src_sound_Oscillator.js.html#l18"><code>src&#x2F;sound&#x2F;Oscillator.js:18</code></a>
         
         </p>
 
@@ -213,7 +226,22 @@
                     
 
                     <div class="param-description">
-                        <p>AudioContext instance</p>
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">semitone</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>-23 ~ 23, (0 ~ 11) is 1 octave</p>
 
                     </div>
 
@@ -222,14 +250,30 @@
             
                 <li class="param">
                     
-                        <code class="param-name">source</code>
-                        <span class="type">AudioBufferSourceNode</span>
+                        <code class="param-name">type</code>
+                        <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>AudioBufferSourceNode instance</p>
+                        <p>wave type 0 ~ 4</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">khz</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>0 ~ ∞</p>
 
                     </div>
 
@@ -256,6 +300,8 @@
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
         
         
     </ul>
@@ -270,36 +316,22 @@
 
                     <ul class="index-list methods">
                         
-                            <li class="index-item method protected">
-                                <a href="#method__normalize">_normalize</a>
+                            <li class="index-item method">
+                                <a href="#method_getOscillator">getOscillator</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getGain">getGain</a>
+                                <a href="#method_setFrequency">setFrequency</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getGainNode">getGainNode</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_getVolume">getVolume</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_setVolume">setVolume</a>
+                                <a href="#method_setSemitone">setSemitone</a>
 
                                 
                                 
@@ -309,6 +341,59 @@
                 </div>
             
 
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_CUSTOM">CUSTOM</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_SAWTOOTH">SAWTOOTH</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_SINE">SINE</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_SQUARE">SQUARE</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_TRIANGLE">TRIANGLE</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
             
 
             
@@ -321,33 +406,21 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method__normalize" class="method item protected">
-    <h3 class="name"><code>_normalize</code></h3>
+                    <div id="method_getOscillator" class="method item">
+    <h3 class="name"><code>getOscillator</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>val</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">OscillatorNode</span>
         </span>
     
 
     
 
-    
-        <span class="flag protected">protected</span>
     
 
     
@@ -369,7 +442,7 @@
             
         
         
-        <a href="../files/src_sound_VolumeControl.js.html#l69"><code>src&#x2F;sound&#x2F;VolumeControl.js:69</code></a>
+        <a href="../files/src_sound_Oscillator.js.html#l82"><code>src&#x2F;sound&#x2F;Oscillator.js:82</code></a>
         
         </p>
 
@@ -380,7 +453,85 @@
     </div>
 
     <div class="description">
-        <p>0 ~ 1 範囲に正規化</p>
+        
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">OscillatorNode</span>:
+                    
+                    <p>OscillatorNode を返します</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setFrequency" class="method item">
+    <h3 class="name"><code>setFrequency</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>khz</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_Oscillator.js.html#l90"><code>src&#x2F;sound&#x2F;Oscillator.js:90</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>khz を設定します</p>
 
     </div>
 
@@ -392,7 +543,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">val</code>
+                        <code class="param-name">khz</code>
                         <span class="type">Object</span>
                     
 
@@ -410,243 +561,13 @@
     
 
     
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>0 ~ 1の数値を返します</p>
-
-                
-            </div>
-        </div>
-    
 
     
 </div>
 
                 
-                    <div id="method_getGain" class="method item">
-    <h3 class="name"><code>getGain</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">AudioParam</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sound_VolumeControl.js.html#l61"><code>src&#x2F;sound&#x2F;VolumeControl.js:61</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">AudioParam</span>:
-                    
-                    <p>GainNode.gain を返します</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getGainNode" class="method item">
-    <h3 class="name"><code>getGainNode</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">GainNode</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sound_VolumeControl.js.html#l53"><code>src&#x2F;sound&#x2F;VolumeControl.js:53</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">GainNode</span>:
-                    
-                    <p>GainNodeを返します</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getVolume" class="method item">
-    <h3 class="name"><code>getVolume</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sound_VolumeControl.js.html#l45"><code>src&#x2F;sound&#x2F;VolumeControl.js:45</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>現在の volume 値を返します</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_setVolume" class="method item">
-    <h3 class="name"><code>setVolume</code></h3>
+                    <div id="method_setSemitone" class="method item">
+    <h3 class="name"><code>setSemitone</code></h3>
 
     
         <div class="args">
@@ -654,7 +575,7 @@
             
                 <li class="arg">
                     
-                        <code>val</code>
+                        <code>semitone_value</code>
                     
                 </li>
             
@@ -687,7 +608,7 @@
             
         
         
-        <a href="../files/src_sound_VolumeControl.js.html#l36"><code>src&#x2F;sound&#x2F;VolumeControl.js:36</code></a>
+        <a href="../files/src_sound_Oscillator.js.html#l99"><code>src&#x2F;sound&#x2F;Oscillator.js:99</code></a>
         
         </p>
 
@@ -698,7 +619,7 @@
     </div>
 
     <div class="description">
-        <p>volumeを変更します</p>
+        <p>semitone 値を元に cents を計算し detune.value へ設定します</p>
 
     </div>
 
@@ -710,15 +631,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">val</code>
+                        <code class="param-name">semitone_value</code>
                         <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>0 ~ 1</p>
-
+                         
                     </div>
 
                     
@@ -737,6 +657,257 @@
             </div>
         
 
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_CUSTOM" class="property item">
+    <h3 class="name"><code>CUSTOM</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_Oscillator.js.html#l72"><code>src&#x2F;sound&#x2F;Oscillator.js:72</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>wave type custom(4) です</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_SAWTOOTH" class="property item">
+    <h3 class="name"><code>SAWTOOTH</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_Oscillator.js.html#l58"><code>src&#x2F;sound&#x2F;Oscillator.js:58</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>wave type sawtooth(2) です</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_SINE" class="property item">
+    <h3 class="name"><code>SINE</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_Oscillator.js.html#l44"><code>src&#x2F;sound&#x2F;Oscillator.js:44</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>wave type sine(0) です</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_SQUARE" class="property item">
+    <h3 class="name"><code>SQUARE</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_Oscillator.js.html#l51"><code>src&#x2F;sound&#x2F;Oscillator.js:51</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>wave type square(0) です</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_TRIANGLE" class="property item">
+    <h3 class="name"><code>TRIANGLE</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_Oscillator.js.html#l65"><code>src&#x2F;sound&#x2F;Oscillator.js:65</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>wave type triangle(3) です</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

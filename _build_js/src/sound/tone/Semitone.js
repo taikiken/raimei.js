@@ -17,25 +17,44 @@
         Octave = RAIMEI.Octave;
 
     RAIMEI.Semitone = ( function (){
-        // @class Semitone
-        function Semitone ( semitone ) {
-            Cents.call( this, semitone * 100 );
-            this._semitone_value = semitone;
+        /**
+         * @class Semitone
+         * @param {int} semitone_value semitone
+         * @constructor
+         */
+        function Semitone ( semitone_value ) {
+            Cents.call( this, semitone_value * 100 );
+            this._semitone_value = semitone_value;
         }
 
         RAIMEI.extend( Cents, Semitone );
 
         var p = Semitone.prototype;
 
+        /**
+         * @method getSemitone
+         * @returns {number} 現在の semitone を返します
+         */
         p.getSemitone = function () {
             return this._semitone_value;
         };
 
-        p.setSemitone = function ( semitone ) {
-            this._semitone_value = semitone;
-            this.setCents( semitone * 100 );
+        /**
+         * semitone を設定します。
+         * <br>centsを計算し detune.value へ設定します
+         * @method setSemitone
+         * @param {semitone} semitone_value
+         */
+        p.setSemitone = function ( semitone_value ) {
+            this._semitone_value = semitone_value;
+            this.setCents( semitone_value * 100 );
         };
 
+        /**
+         * オクターブ上下させます
+         * @method shiftOctave
+         * @param {int} n 整数値 -2 ~ 2
+         */
         p.shiftOctave = function ( n ) {
             n = parseInt( n, 10 ) || 1;
 

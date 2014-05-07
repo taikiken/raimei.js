@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>RAIMEI - raimei.js API</title>
+    <title>Semitone - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,12 +110,16 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>RAIMEI Class</h1>
+                        <h1>Semitone Class</h1>
 <div class="box meta">
     
 
     
 
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_sound_tone_Semitone.js.html#l20"><code>src&#x2F;sound&#x2F;tone&#x2F;Semitone.js:20</code></a>
+        </div>
     
 
     
@@ -129,6 +133,97 @@
     
 </div>
 
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_Semitone" class="method item">
+    <h3 class="name"><code>Semitone</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>semitone_value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_tone_Semitone.js.html#l20"><code>src&#x2F;sound&#x2F;tone&#x2F;Semitone.js:20</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">semitone_value</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>semitone</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -154,21 +249,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_extend">extend</a>
+                                <a href="#method_getSemitone">getSemitone</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_isNumeric">isNumeric</a>
+                                <a href="#method_setSemitone">setSemitone</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_maxValue">maxValue</a>
+                                <a href="#method_shiftOctave">shiftOctave</a>
 
                                 
                                 
@@ -190,239 +285,11 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_extend" class="method item">
-    <h3 class="name"><code>extend</code></h3>
+                    <div id="method_getSemitone" class="method item">
+    <h3 class="name"><code>getSemitone</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>PARENT</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>CHILD</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_RAIMEI.js.html#l181"><code>src&#x2F;RAIMEI.js:181</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Class継承に使用します</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">PARENT</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>親クラス</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">CHILD</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>子クラス</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_isNumeric" class="method item">
-    <h3 class="name"><code>isNumeric</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>obj</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_RAIMEI.js.html#l194"><code>src&#x2F;RAIMEI.js:194</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>数値チェックを行います</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">obj</code>
-                        <span class="type"></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Number</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>数値か否かを返します</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_maxValue" class="method item">
-    <h3 class="name"><code>maxValue</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>arr</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -454,7 +321,7 @@
             
         
         
-        <a href="../files/src_RAIMEI.js.html#l206"><code>src&#x2F;RAIMEI.js:206</code></a>
+        <a href="../files/src_sound_tone_Semitone.js.html#l34"><code>src&#x2F;sound&#x2F;tone&#x2F;Semitone.js:34</code></a>
         
         </p>
 
@@ -465,7 +332,86 @@
     </div>
 
     <div class="description">
-        <p>配列内の最大値を取得します</p>
+        
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>現在の semitone を返します</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setSemitone" class="method item">
+    <h3 class="name"><code>setSemitone</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>semitone_value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_tone_Semitone.js.html#l42"><code>src&#x2F;sound&#x2F;tone&#x2F;Semitone.js:42</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>semitone を設定します。
+<br>centsを計算し detune.value へ設定します</p>
 
     </div>
 
@@ -477,8 +423,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">arr</code>
-                        <span class="type">Array</span>
+                        <code class="param-name">semitone_value</code>
+                        <span class="type"><a href="../classes/Semitone.html" class="crosslink">Semitone</a></span>
                     
 
                     
@@ -495,19 +441,94 @@
     
 
     
-        <div class="returns">
-            <h4>Returns:</h4>
 
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Number</span>:
-                    
-                    <p>配列内の最大値を返します</p>
+    
+</div>
 
                 
-            </div>
+                    <div id="method_shiftOctave" class="method item">
+    <h3 class="name"><code>shiftOctave</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>n</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
         </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_tone_Semitone.js.html#l53"><code>src&#x2F;sound&#x2F;tone&#x2F;Semitone.js:53</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>オクターブ上下させます</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">n</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>整数値 -2 ~ 2</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     

@@ -1,7 +1,7 @@
 /**
  * license inazumatv.com
  * author (at)taikiken / http://inazumatv.com
- * date 2014/04/20 - 18:26
+ * date 2014/04/24 - 0:12
  *
  * Copyright (c) 2011-2014 inazumatv.com, inc.
  *
@@ -14,24 +14,24 @@
     "use strict";
     var RAIMEI = window.RAIMEI;
 
-    RAIMEI.VolumeControl = ( function (){
+    RAIMEI.VolumeControlWithOscillator = ( function (){
         /**
-         * @class VolumeControl
+         * @class VolumeControlWithOscillator
          * @param {AudioContext} context AudioContext instance
-         * @param {AudioBufferSourceNode} source AudioBufferSourceNode instance
+         * @param {OscillatorNode} oscillator_node
          * @constructor
          */
-        function VolumeControl ( context, source ) {
+        function VolumeControlWithOscillator ( context, oscillator_node ) {
             var gainNode = context.createGain();
 
-            source.connect( gainNode );
+            oscillator_node.connect( gainNode );
             gainNode.connect( context.destination );
 
             this._gainNode = gainNode;
             this._gain = gainNode.gain;
         }
 
-        var p = VolumeControl.prototype;
+        var p = VolumeControlWithOscillator.prototype;
 
         /**
          * volumeを変更します
@@ -85,7 +85,6 @@
             return val;
         };
 
-        return VolumeControl;
+        return VolumeControlWithOscillator;
     }() );
-
 }( window ) );
