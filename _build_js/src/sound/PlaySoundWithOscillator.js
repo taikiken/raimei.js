@@ -19,6 +19,7 @@
 
     RAIMEI.PlaySoundWithOscillator = ( function (){
         /**
+<<<<<<< HEAD
          * oscillator を使い再生
          * @class PlaySoundWithOscillator
          *
@@ -35,6 +36,17 @@
          * @constructor
          */
         function PlaySoundWithOscillator ( context, semitone_value, type, khz ) {
+=======
+         * @class PlaySoundWithOscillator
+         * @uses EventDispatcher
+         * @param {AudioContext} context
+         * @param {int} semitone
+         * @param {int} type
+         * @param {number} khz
+         * @constructor
+         */
+        function PlaySoundWithOscillator ( context, semitone, type, khz ) {
+>>>>>>> FETCH_HEAD
             this._context = context;
             this._semitone_value = parseInt( semitone_value, 10 );
             this._type = isNumeric( type ) ? type : Oscillator.SINE;
@@ -45,11 +57,18 @@
 
         EventDispatcher.initialize( p );
 
+        /**
+         * @method start
+         */
         p.start = function () {
             this.play( 0 );
             this.dispatchEvent( { type: "start", delay: 0, khz: this._khz, semitone: this._semitone_value, wave: this._type, currentTarget: this } );
         };
 
+        /**
+         * @method play
+         * @param time
+         */
         p.play = function ( time ) {
             var context = this._context,
                 semitone_value = this._semitone_value,
@@ -71,39 +90,76 @@
             this.dispatchEvent( { type: "play", delay: time, khz: khz, semitone: semitone_value, wave: type, currentTarget: oscillator_node } );
         };
 
+        /**
+         * @method stop
+         */
         p.stop = function () {
             this._oscillator_node.stop( 0 );
             this.dispatchEvent( { type: "stop", delay: 0, khz: this._khz, semitone: this._semitone_value, wave: this._type, currentTarget: this } );
         };
 
+        /**
+         * @method getOscillator
+         * @returns {*|PlaySoundWithOscillator._oscillator_node}
+         */
         p.getOscillator = function () {
             return this._oscillator_node;
         };
 
+        /**
+         * @method getType
+         * @returns {*|PlaySoundWithOscillator._type}
+         */
         p.getType = function () {
             return this._type;
         };
 
+        /**
+         * @method setType
+         * @param type
+         */
         p.setType = function ( type ) {
             this._type = type;
         };
 
+        /**
+         * @method getKHZ
+         * @returns {*|PlaySoundWithOscillator._khz}
+         */
         p.getKHZ = function () {
             return this._khz;
         };
 
+        /**
+         * @method setKHZ
+         * @param khz
+         */
         p.setKHZ = function ( khz ) {
             this._oscillator&&this._oscillator.setFrequency( khz );
             this._khz = khz;
         };
 
+        /**
+         * @method getSemitone
+         * @returns {*|PlaySoundWithOscillator._semitone_value}
+         */
         p.getSemitone = function () {
             return this._semitone_value;
         };
 
+<<<<<<< HEAD
         p.setSemitone = function ( semitone_value ) {
             this._oscillator&&this._oscillator.setSemitone( semitone_value );
             this._semitone_value = semitone_value;
+=======
+        /**
+         * @method setSemitone
+         * @param semitone
+         */
+        p.setSemitone = function ( semitone ) {
+            this._oscillator.setSemitone( semitone )
+            this._semitone_value = semitone;
+>>>>>>> FETCH_HEAD
         };
 
         return PlaySoundWithOscillator;

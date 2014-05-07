@@ -18,6 +18,7 @@
 
     RAIMEI.Semitone = ( function (){
         /**
+<<<<<<< HEAD
          * @class Semitone
          * @param {int} semitone_value semitone
          * @constructor
@@ -25,6 +26,17 @@
         function Semitone ( semitone_value ) {
             Cents.call( this, semitone_value * 100 );
             this._semitone_value = semitone_value;
+=======
+         * 半音設定します
+         * @class Semitone
+         * @extends Cents
+         * @param {int} semitone 半音
+         * @constructor
+         */
+        function Semitone ( semitone ) {
+            Cents.call( this, semitone * 100 );
+            this._semitone_value = semitone;
+>>>>>>> FETCH_HEAD
         }
 
         RAIMEI.extend( Cents, Semitone );
@@ -33,13 +45,18 @@
 
         /**
          * @method getSemitone
+<<<<<<< HEAD
          * @returns {number} 現在の semitone を返します
+=======
+         * @returns {int} Semitone._semitone_value 現在の半音値を返します
+>>>>>>> FETCH_HEAD
          */
         p.getSemitone = function () {
             return this._semitone_value;
         };
 
         /**
+<<<<<<< HEAD
          * semitone を設定します。
          * <br>centsを計算し detune.value へ設定します
          * @method setSemitone
@@ -54,6 +71,21 @@
          * オクターブ上下させます
          * @method shiftOctave
          * @param {int} n 整数値 -2 ~ 2
+=======
+         * 半音設定
+         * @method setSemitone
+         * @param {int} semitone
+         */
+        p.setSemitone = function ( semitone ) {
+            this._semitone_value = semitone;
+            this.setCents( semitone * 100 );
+        };
+
+        /**
+         * オクターブ変更
+         * @method shiftOctave
+         * @param {int} n オクターブ -2 ~ 2
+>>>>>>> FETCH_HEAD
          */
         p.shiftOctave = function ( n ) {
             n = parseInt( n, 10 ) || 1;

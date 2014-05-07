@@ -24,7 +24,11 @@
         }
 
         /**
+<<<<<<< HEAD
          * 1オクターブ定数
+=======
+         * 1オクターブ cents 1200
+>>>>>>> FETCH_HEAD
          * @const OCTAVE
          * @type {number}
          */
