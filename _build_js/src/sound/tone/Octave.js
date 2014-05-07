@@ -15,10 +15,18 @@
     var RAIMEI = window.RAIMEI;
 
     RAIMEI.Octave = ( function (){
-        // @class Octave
+        /**
+         * @class Octave
+         * @constructor
+         */
         function Octave () {
         }
 
+        /**
+         * 1オクターブ cents 1200
+         * @const OCTAVE
+         * @type {number}
+         */
         Octave.OCTAVE = 1200;//12 * 100;
 
         return Octave;

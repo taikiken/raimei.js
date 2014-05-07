@@ -19,6 +19,7 @@
     RAIMEI.PlaySoundWithBuffer = ( function (){
         /**
          * @class PlaySoundWithBuffer
+         * @uses EventDispatcher
          * @param {AudioContext} context window.AudioContext instance
          * @param {AudioBuffer} buffer AudioBuffer instance
          * @param {Boolean} [loop] loop option default is false

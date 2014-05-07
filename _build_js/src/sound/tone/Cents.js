@@ -16,6 +16,7 @@
 
     RAIMEI.Cents = ( function (){
         /**
+         * 半音値をcentsを設定します
          * @class Cents
          * @param {int} cents 0 ~ 100, 100cents === 1semitone, 12semitone === 1octave
          * @constructor
