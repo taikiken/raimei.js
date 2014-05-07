@@ -15,7 +15,6 @@
     var RAIMEI = window.RAIMEI;
 
     RAIMEI.Oscillator = ( function (){
-<<<<<<< HEAD
         /**
          * oscillator wrapper
          * @class Oscillator
@@ -25,11 +24,7 @@
          * @param {number} khz 0 ~ ∞
          * @constructor
          */
-        function Oscillator ( context, semitone, type, khz ) {
-=======
-        // @class Oscillator
         function Oscillator ( context, semitone_value, type, khz ) {
->>>>>>> FETCH_HEAD
             var oscillator = context.createOscillator(),
                 semitone = new RAIMEI.Semitone( semitone_value );
 
@@ -102,14 +97,11 @@
             this._oscillator_node.frequency.value = khz;
         };
 
-<<<<<<< HEAD
         /**
          * semitone 値を元に cents を計算し detune.value へ設定します
          * @method setSemitone
          * @param {number} semitone_value
          */
-=======
->>>>>>> FETCH_HEAD
         p.setSemitone = function ( semitone_value ) {
             // semitone(半音)
             // 100Cents === 1semitone

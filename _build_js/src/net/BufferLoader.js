@@ -36,6 +36,7 @@
         EventDispatcher.initialize( p );
 
         /**
+         * responseType を arraybuffer にし音声ファイルをAjx loadします
          * @method load
          */
         p.load = function () {

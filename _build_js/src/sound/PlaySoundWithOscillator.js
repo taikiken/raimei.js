@@ -19,7 +19,6 @@
 
     RAIMEI.PlaySoundWithOscillator = ( function (){
         /**
-<<<<<<< HEAD
          * oscillator を使い再生
          * @class PlaySoundWithOscillator
          *
@@ -36,17 +35,6 @@
          * @constructor
          */
         function PlaySoundWithOscillator ( context, semitone_value, type, khz ) {
-=======
-         * @class PlaySoundWithOscillator
-         * @uses EventDispatcher
-         * @param {AudioContext} context
-         * @param {int} semitone
-         * @param {int} type
-         * @param {number} khz
-         * @constructor
-         */
-        function PlaySoundWithOscillator ( context, semitone, type, khz ) {
->>>>>>> FETCH_HEAD
             this._context = context;
             this._semitone_value = parseInt( semitone_value, 10 );
             this._type = isNumeric( type ) ? type : Oscillator.SINE;
@@ -147,19 +135,13 @@
             return this._semitone_value;
         };
 
-<<<<<<< HEAD
+        /**
+         * @method setSemitone
+         * @param semitone_value
+         */
         p.setSemitone = function ( semitone_value ) {
             this._oscillator&&this._oscillator.setSemitone( semitone_value );
             this._semitone_value = semitone_value;
-=======
-        /**
-         * @method setSemitone
-         * @param semitone
-         */
-        p.setSemitone = function ( semitone ) {
-            this._oscillator.setSemitone( semitone )
-            this._semitone_value = semitone;
->>>>>>> FETCH_HEAD
         };
 
         return PlaySoundWithOscillator;
