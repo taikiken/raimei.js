@@ -69,11 +69,15 @@
             
                 <li><a href="../classes/VolumeControl.html">VolumeControl</a></li>
             
+                <li><a href="../classes/VolumeControlWithOscillator.html">VolumeControlWithOscillator</a></li>
+            
                 <li><a href="../classes/WebAudioDetector.html">WebAudioDetector</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/RAIMEI.html">RAIMEI</a></li>
             
             </ul>
         </div>
@@ -149,7 +153,7 @@
 
         /**
          * @method getSemitone
-         * @returns {number} 現在の semitone を返します
+         * @returns {int} Semitone._semitone_value 現在の半音値を返します
          */
         p.getSemitone = function () {
             return this._semitone_value;
@@ -159,7 +163,7 @@
          * semitone を設定します。
          * &lt;br&gt;centsを計算し detune.value へ設定します
          * @method setSemitone
-         * @param {semitone} semitone_value
+         * @param {int} semitone_value
          */
         p.setSemitone = function ( semitone_value ) {
             this._semitone_value = semitone_value;
@@ -167,9 +171,19 @@
         };
 
         /**
-         * オクターブ上下させます
+         * 半音設定
+         * @method setSemitone
+         * @param {int} semitone
+         */
+        p.setSemitone = function ( semitone ) {
+            this._semitone_value = semitone;
+            this.setCents( semitone * 100 );
+        };
+
+        /**
+         * オクターブ変更
          * @method shiftOctave
-         * @param {int} n 整数値 -2 ~ 2
+         * @param {int} n オクターブ -2 ~ 2
          */
         p.shiftOctave = function ( n ) {
             n = parseInt( n, 10 ) || 1;

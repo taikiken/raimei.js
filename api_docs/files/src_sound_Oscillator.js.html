@@ -69,11 +69,15 @@
             
                 <li><a href="../classes/VolumeControl.html">VolumeControl</a></li>
             
+                <li><a href="../classes/VolumeControlWithOscillator.html">VolumeControlWithOscillator</a></li>
+            
                 <li><a href="../classes/WebAudioDetector.html">WebAudioDetector</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/RAIMEI.html">RAIMEI</a></li>
             
             </ul>
         </div>
@@ -140,21 +144,22 @@
          * @param {number} khz 0 ~ ∞
          * @constructor
          */
-        function Oscillator ( context, semitone, type, khz ) {
+        function Oscillator ( context, semitone_value, type, khz ) {
             var oscillator = context.createOscillator(),
-                sem = new RAIMEI.Semitone( semitone );
+                semitone = new RAIMEI.Semitone( semitone_value );
 
-            this._semitone = sem;
+            this._semitone = semitone;
 
-            oscillator.connect( context.destination );
+//            oscillator.connect( context.destination );
             oscillator.frequency.value = khz;
-            oscillator.detune.value = sem.getCents();
+//            oscillator.detune.value = semitone.getCents();
             oscillator.type = type;
 
             oscillator.start = oscillator.start || oscillator.noteOn;
             oscillator.stop = oscillator.stop || oscillator.noteOff;
 
             this._oscillator_node = oscillator;
+            this.setSemitone( semitone_value );
         }
 
         /**
@@ -194,6 +199,8 @@
         Oscillator.CUSTOM = 4;
 
         var p = Oscillator.prototype;
+
+        p.constructor = Oscillator;
 
         /**
          * @method getOscillator

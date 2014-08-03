@@ -10,6 +10,7 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  */
+/*jshint -W030 */
 ( function ( window ){
     "use strict";
     var RAIMEI = window.RAIMEI,
@@ -22,7 +23,7 @@
          * @uses EventDispatcher
          * @param {AudioContext} context window.AudioContext instance
          * @param {AudioBuffer} buffer AudioBuffer instance
-         * @param {Boolean} [loop] loop option default is false
+         * @param {Boolean=false} [loop] loop option default is false
          * @constructor
          */
         function PlaySoundWithBuffer ( context, buffer, loop ) {
@@ -37,6 +38,8 @@
         }
 
         var p = PlaySoundWithBuffer.prototype;
+
+        p.constructor = PlaySoundWithBuffer;
 
         EventDispatcher.initialize( p );
 

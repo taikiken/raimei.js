@@ -36,6 +36,8 @@
         
         var p = BufferSource.prototype;
 
+        p.constructor = BufferSource;
+
         /**
          * @method getSource
          * @returns {AudioBufferSourceNode} AudioBufferSourceNodeを返します

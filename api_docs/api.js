@@ -15,9 +15,17 @@ YUI.add("yuidoc-meta", function(Y) {
         "RAIMEI",
         "Semitone",
         "VolumeControl",
+        "VolumeControlWithOscillator",
         "WebAudioDetector"
     ],
-    "modules": [],
-    "allModules": []
+    "modules": [
+        "RAIMEI"
+    ],
+    "allModules": [
+        {
+            "displayName": "RAIMEI",
+            "name": "RAIMEI"
+        }
+    ]
 } };
 });

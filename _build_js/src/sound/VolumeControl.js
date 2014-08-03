@@ -33,6 +33,8 @@
 
         var p = VolumeControl.prototype;
 
+        p.constructor = VolumeControl;
+
         /**
          * volumeを変更します
          * @method setVolume

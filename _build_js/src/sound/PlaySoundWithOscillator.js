@@ -43,6 +43,8 @@
 
         var p = PlaySoundWithOscillator.prototype;
 
+        p.constructor = PlaySoundWithOscillator;
+
         EventDispatcher.initialize( p );
 
         /**
@@ -64,12 +66,13 @@
                 khz = this._khz,
 
                 oscillator,
-                oscillator_node;
+                oscillator_node,
+                volume_control;
 
             oscillator = new RAIMEI.Oscillator( context, semitone_value, type, khz );
             oscillator_node = oscillator.getOscillator();
 
-            var volume_control = new RAIMEI.VolumeControlWithOscillator( context, oscillator_node );
+            volume_control = new RAIMEI.VolumeControlWithOscillator( context, oscillator_node );
             volume_control.setVolume( 1 );
 
             this._oscillator_node = oscillator_node;

@@ -27,6 +27,8 @@
 
         var p = Cents.prototype;
 
+        p.constructor = Cents;
+
         /**
          * @method getCents
          * @returns {int} cents を返します

@@ -33,6 +33,7 @@
 
         var p = PlaySoundBySine.prototype;
 
+        p.constructor = PlaySoundBySine;
 
         return PlaySoundBySine;
     }() );

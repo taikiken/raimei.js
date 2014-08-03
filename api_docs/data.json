@@ -113,6 +113,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sound/VolumeControlWithOscillator.js": {
+            "name": "src/sound/VolumeControlWithOscillator.js",
+            "modules": {},
+            "classes": {
+                "VolumeControlWithOscillator": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/util/Detector.js": {
             "name": "src/util/Detector.js",
             "modules": {},
@@ -124,7 +133,9 @@
         },
         "src/RAIMEI.js": {
             "name": "src/RAIMEI.js",
-            "modules": {},
+            "modules": {
+                "RAIMEI": 1
+            },
             "classes": {},
             "fors": {
                 "RAIMEI": 1
@@ -141,7 +152,40 @@
             "namespaces": {}
         }
     },
-    "modules": {},
+    "modules": {
+        "RAIMEI": {
+            "name": "RAIMEI",
+            "submodules": {},
+            "classes": {
+                "Context": 1,
+                "EventDispatcher": 1,
+                "BufferLoader": 1,
+                "Cents": 1,
+                "Octave": 1,
+                "Semitone": 1,
+                "BufferSource": 1,
+                "Oscillator": 1,
+                "PlaySoundBySine": 1,
+                "PlaySoundWithBuffer": 1,
+                "PlaySoundWithOscillator": 1,
+                "VolumeControl": 1,
+                "VolumeControlWithOscillator": 1,
+                "Detector": 1,
+                "RAIMEI": 1,
+                "WebAudioDetector": 1
+            },
+            "fors": {
+                "RAIMEI": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/WebAudioDetector.js",
+            "line": 23,
+            "license": "inazumatv.com",
+            "author": "(at)taikiken / http://inazumatv.com",
+            "date": "2014/04/19 - 16:37\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software."
+        }
+    },
     "classes": {
         "Context": {
             "name": "Context",
@@ -151,6 +195,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/core/Context.js",
             "line": 18,
             "is_constructor": 1
@@ -162,7 +207,10 @@
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
-            "extension_for": [],
+            "extension_for": [
+                "PlaySoundWithBuffer"
+            ],
+            "module": "RAIMEI",
             "file": "src/events/EventDispatcher.js",
             "line": 17,
             "is_constructor": 1
@@ -175,6 +223,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/net/BufferLoader.js",
             "line": 23,
             "params": [
@@ -199,8 +248,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/tone/Cents.js",
             "line": 18,
+            "description": "半音値をcentsを設定します",
             "params": [
                 {
                     "name": "cents",
@@ -218,6 +269,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/tone/Octave.js",
             "line": 18,
             "is_constructor": 1
@@ -230,6 +282,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/tone/Semitone.js",
             "line": 20,
             "params": [
@@ -249,6 +302,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/BufferSource.js",
             "line": 18,
             "description": "AudioBufferSourceNode を作成します",
@@ -274,6 +328,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/Oscillator.js",
             "line": 18,
             "description": "oscillator wrapper",
@@ -309,6 +364,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/PlaySoundBySine.js",
             "line": 19,
             "description": "Sine 波再生",
@@ -340,8 +396,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/PlaySoundWithBuffer.js",
             "line": 20,
+            "uses": [
+                "EventDispatcher"
+            ],
             "params": [
                 {
                     "name": "context",
@@ -370,6 +430,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/PlaySoundWithOscillator.js",
             "line": 21,
             "description": "oscillator を使い再生",
@@ -407,6 +468,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/sound/VolumeControl.js",
             "line": 18,
             "params": [
@@ -423,6 +485,31 @@
             ],
             "is_constructor": 1
         },
+        "VolumeControlWithOscillator": {
+            "name": "VolumeControlWithOscillator",
+            "shortname": "VolumeControlWithOscillator",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RAIMEI",
+            "file": "src/sound/VolumeControlWithOscillator.js",
+            "line": 18,
+            "params": [
+                {
+                    "name": "context",
+                    "description": "AudioContext instance",
+                    "type": "AudioContext"
+                },
+                {
+                    "name": "oscillator_node",
+                    "description": "",
+                    "type": "OscillatorNode"
+                }
+            ],
+            "is_constructor": 1
+        },
         "Detector": {
             "name": "Detector",
             "shortname": "Detector",
@@ -431,6 +518,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
             "file": "src/util/Detector.js",
             "line": 18,
             "is_constructor": 1
@@ -442,7 +530,9 @@
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
-            "extension_for": []
+            "extension_for": [],
+            "module": "RAIMEI",
+            "namespace": ""
         },
         "WebAudioDetector": {
             "name": "WebAudioDetector",
@@ -452,6 +542,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "RAIMEI",
+            "namespace": "",
             "file": "src/WebAudioDetector.js",
             "line": 23,
             "is_constructor": 1
@@ -561,6 +653,7 @@
         {
             "file": "src/net/BufferLoader.js",
             "line": 38,
+            "description": "responseType を arraybuffer にし音声ファイルをAjx loadします",
             "itemtype": "method",
             "name": "load",
             "class": "BufferLoader"
@@ -573,7 +666,7 @@
         },
         {
             "file": "src/sound/tone/Cents.js",
-            "line": 29,
+            "line": 30,
             "itemtype": "method",
             "name": "getCents",
             "return": {
@@ -584,7 +677,7 @@
         },
         {
             "file": "src/sound/tone/Cents.js",
-            "line": 37,
+            "line": 38,
             "description": "cents を設定します",
             "itemtype": "method",
             "name": "setCents",
@@ -606,7 +699,7 @@
         {
             "file": "src/sound/tone/Octave.js",
             "line": 26,
-            "description": "1オクターブ定数",
+            "description": "1オクターブ cents 1200",
             "itemtype": "property",
             "name": "OCTAVE",
             "final": "",
@@ -625,8 +718,8 @@
             "itemtype": "method",
             "name": "getSemitone",
             "return": {
-                "description": "現在の semitone を返します",
-                "type": "Number"
+                "description": "Semitone._semitone_value 現在の半音値を返します",
+                "type": "Int"
             },
             "class": "Semitone"
         },
@@ -640,7 +733,7 @@
                 {
                     "name": "semitone_value",
                     "description": "",
-                    "type": "Semitone"
+                    "type": "Int"
                 }
             ],
             "class": "Semitone"
@@ -648,13 +741,28 @@
         {
             "file": "src/sound/tone/Semitone.js",
             "line": 53,
-            "description": "オクターブ上下させます",
+            "description": "半音設定",
+            "itemtype": "method",
+            "name": "setSemitone",
+            "params": [
+                {
+                    "name": "semitone",
+                    "description": "",
+                    "type": "Int"
+                }
+            ],
+            "class": "Semitone"
+        },
+        {
+            "file": "src/sound/tone/Semitone.js",
+            "line": 63,
+            "description": "オクターブ変更",
             "itemtype": "method",
             "name": "shiftOctave",
             "params": [
                 {
                     "name": "n",
-                    "description": "整数値 -2 ~ 2",
+                    "description": "オクターブ -2 ~ 2",
                     "type": "Int"
                 }
             ],
@@ -668,7 +776,7 @@
         },
         {
             "file": "src/sound/BufferSource.js",
-            "line": 39,
+            "line": 41,
             "itemtype": "method",
             "name": "getSource",
             "return": {
@@ -685,7 +793,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 44,
+            "line": 45,
             "description": "wave type sine(0) です",
             "itemtype": "property",
             "name": "SINE",
@@ -696,7 +804,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 51,
+            "line": 52,
             "description": "wave type square(0) です",
             "itemtype": "property",
             "name": "SQUARE",
@@ -707,7 +815,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 58,
+            "line": 59,
             "description": "wave type sawtooth(2) です",
             "itemtype": "property",
             "name": "SAWTOOTH",
@@ -718,7 +826,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 65,
+            "line": 66,
             "description": "wave type triangle(3) です",
             "itemtype": "property",
             "name": "TRIANGLE",
@@ -729,7 +837,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 72,
+            "line": 73,
             "description": "wave type custom(4) です",
             "itemtype": "property",
             "name": "CUSTOM",
@@ -740,7 +848,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 82,
+            "line": 85,
             "itemtype": "method",
             "name": "getOscillator",
             "return": {
@@ -751,7 +859,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 90,
+            "line": 93,
             "description": "khz を設定します",
             "itemtype": "method",
             "name": "setFrequency",
@@ -765,7 +873,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 99,
+            "line": 102,
             "description": "semitone 値を元に cents を計算し detune.value へ設定します",
             "itemtype": "method",
             "name": "setSemitone",
@@ -780,7 +888,7 @@
         },
         {
             "file": "src/sound/Oscillator.js",
-            "line": 114,
+            "line": 117,
             "description": "wave type を設定します",
             "params": [
                 {
@@ -805,7 +913,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 42,
+            "line": 45,
             "description": "delay無しでサウンドを先頭から再生します",
             "itemtype": "method",
             "name": "start",
@@ -813,7 +921,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 51,
+            "line": 54,
             "description": "サウンド再生, delay and offset option を使用します",
             "itemtype": "method",
             "name": "play",
@@ -834,7 +942,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 75,
+            "line": 78,
             "description": "再生を止めEventを発火します",
             "itemtype": "method",
             "name": "stop",
@@ -842,7 +950,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 84,
+            "line": 87,
             "description": "一時停止します",
             "itemtype": "method",
             "name": "pause",
@@ -850,7 +958,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 98,
+            "line": 101,
             "description": "再生再開します",
             "itemtype": "method",
             "name": "resume",
@@ -858,7 +966,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 108,
+            "line": 111,
             "description": "volume を変更します",
             "itemtype": "method",
             "name": "setVolume",
@@ -873,7 +981,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 117,
+            "line": 120,
             "itemtype": "method",
             "name": "getVolume",
             "return": {
@@ -884,7 +992,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 125,
+            "line": 128,
             "itemtype": "method",
             "name": "getDuration",
             "return": {
@@ -895,7 +1003,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 133,
+            "line": 136,
             "itemtype": "method",
             "name": "getOffset",
             "return": {
@@ -906,7 +1014,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 141,
+            "line": 144,
             "itemtype": "method",
             "name": "getBuffer",
             "return": {
@@ -917,7 +1025,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 149,
+            "line": 152,
             "itemtype": "method",
             "name": "getBufferSource",
             "return": {
@@ -928,7 +1036,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 157,
+            "line": 160,
             "itemtype": "method",
             "name": "getVolumeControl",
             "return": {
@@ -939,7 +1047,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 165,
+            "line": 168,
             "itemtype": "method",
             "name": "getContext",
             "return": {
@@ -950,7 +1058,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 173,
+            "line": 176,
             "itemtype": "method",
             "name": "getSource",
             "return": {
@@ -961,7 +1069,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 181,
+            "line": 184,
             "description": "ended event handler を削除します",
             "itemtype": "method",
             "name": "_dispose",
@@ -971,7 +1079,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 192,
+            "line": 195,
             "description": "再生を止めます",
             "itemtype": "method",
             "name": "_stop",
@@ -981,7 +1089,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 209,
+            "line": 212,
             "description": "ended event handler",
             "itemtype": "method",
             "name": "_onEnded",
@@ -991,7 +1099,7 @@
         },
         {
             "file": "src/sound/PlaySoundWithBuffer.js",
-            "line": 222,
+            "line": 225,
             "description": "AudioBufferSourceNode を作成します",
             "itemtype": "method",
             "name": "_createSource",
@@ -1022,6 +1130,116 @@
             "class": "PlaySoundWithOscillator"
         },
         {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 50,
+            "itemtype": "method",
+            "name": "start",
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 58,
+            "itemtype": "method",
+            "name": "play",
+            "params": [
+                {
+                    "name": "time",
+                    "description": ""
+                }
+            ],
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 83,
+            "itemtype": "method",
+            "name": "stop",
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 91,
+            "itemtype": "method",
+            "name": "getOscillator",
+            "return": {
+                "description": "",
+                "type": "*|PlaySoundWithOscillator._oscillator_node"
+            },
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 99,
+            "itemtype": "method",
+            "name": "getType",
+            "return": {
+                "description": "",
+                "type": "*|PlaySoundWithOscillator._type"
+            },
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 107,
+            "itemtype": "method",
+            "name": "setType",
+            "params": [
+                {
+                    "name": "type",
+                    "description": ""
+                }
+            ],
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 115,
+            "itemtype": "method",
+            "name": "getKHZ",
+            "return": {
+                "description": "",
+                "type": "*|PlaySoundWithOscillator._khz"
+            },
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 123,
+            "itemtype": "method",
+            "name": "setKHZ",
+            "params": [
+                {
+                    "name": "khz",
+                    "description": ""
+                }
+            ],
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 132,
+            "itemtype": "method",
+            "name": "getSemitone",
+            "return": {
+                "description": "",
+                "type": "*|PlaySoundWithOscillator._semitone_value"
+            },
+            "class": "PlaySoundWithOscillator"
+        },
+        {
+            "file": "src/sound/PlaySoundWithOscillator.js",
+            "line": 140,
+            "itemtype": "method",
+            "name": "setSemitone",
+            "params": [
+                {
+                    "name": "semitone_value",
+                    "description": ""
+                }
+            ],
+            "class": "PlaySoundWithOscillator"
+        },
+        {
             "file": "src/sound/VolumeControl.js",
             "line": 1,
             "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/20 - 18:26\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
@@ -1029,7 +1247,7 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 36,
+            "line": 38,
             "description": "volumeを変更します",
             "itemtype": "method",
             "name": "setVolume",
@@ -1044,7 +1262,7 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 45,
+            "line": 47,
             "itemtype": "method",
             "name": "getVolume",
             "return": {
@@ -1055,7 +1273,7 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 53,
+            "line": 55,
             "itemtype": "method",
             "name": "getGainNode",
             "return": {
@@ -1066,7 +1284,7 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 61,
+            "line": 63,
             "itemtype": "method",
             "name": "getGain",
             "return": {
@@ -1077,7 +1295,7 @@
         },
         {
             "file": "src/sound/VolumeControl.js",
-            "line": 69,
+            "line": 71,
             "description": "0 ~ 1 範囲に正規化",
             "itemtype": "method",
             "name": "_normalize",
@@ -1094,6 +1312,80 @@
             "access": "protected",
             "tagname": "",
             "class": "VolumeControl"
+        },
+        {
+            "file": "src/sound/VolumeControlWithOscillator.js",
+            "line": 1,
+            "description": "license inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/24 - 0:12\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "class": "VolumeControlWithOscillator"
+        },
+        {
+            "file": "src/sound/VolumeControlWithOscillator.js",
+            "line": 38,
+            "description": "volumeを変更します",
+            "itemtype": "method",
+            "name": "setVolume",
+            "params": [
+                {
+                    "name": "val",
+                    "description": "0 ~ 1",
+                    "type": "Number"
+                }
+            ],
+            "class": "VolumeControlWithOscillator"
+        },
+        {
+            "file": "src/sound/VolumeControlWithOscillator.js",
+            "line": 47,
+            "itemtype": "method",
+            "name": "getVolume",
+            "return": {
+                "description": "現在の volume 値を返します",
+                "type": "Number"
+            },
+            "class": "VolumeControlWithOscillator"
+        },
+        {
+            "file": "src/sound/VolumeControlWithOscillator.js",
+            "line": 55,
+            "itemtype": "method",
+            "name": "getGainNode",
+            "return": {
+                "description": "GainNodeを返します",
+                "type": "GainNode"
+            },
+            "class": "VolumeControlWithOscillator"
+        },
+        {
+            "file": "src/sound/VolumeControlWithOscillator.js",
+            "line": 63,
+            "itemtype": "method",
+            "name": "getGain",
+            "return": {
+                "description": "GainNode.gain を返します",
+                "type": "AudioParam"
+            },
+            "class": "VolumeControlWithOscillator"
+        },
+        {
+            "file": "src/sound/VolumeControlWithOscillator.js",
+            "line": 71,
+            "description": "0 ~ 1 範囲に正規化",
+            "itemtype": "method",
+            "name": "_normalize",
+            "params": [
+                {
+                    "name": "val",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "0 ~ 1の数値を返します",
+                "type": "Number"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "VolumeControlWithOscillator"
         },
         {
             "file": "src/util/Detector.js",
@@ -1115,15 +1407,7 @@
         },
         {
             "file": "src/RAIMEI.js",
-            "line": 1,
-            "license": "inazumatv.com",
-            "author": "(at)taikiken / http://inazumatv.com",
-            "date": "2014/04/19 - 16:37\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
-            "class": "RAIMEI"
-        },
-        {
-            "file": "src/RAIMEI.js",
-            "line": 181,
+            "line": 185,
             "description": "Class継承に使用します",
             "itemtype": "method",
             "name": "extend",
@@ -1139,11 +1423,12 @@
                     "type": "Function"
                 }
             ],
-            "class": "RAIMEI"
+            "class": "RAIMEI",
+            "module": "RAIMEI"
         },
         {
             "file": "src/RAIMEI.js",
-            "line": 194,
+            "line": 198,
             "description": "数値チェックを行います",
             "itemtype": "method",
             "name": "isNumeric",
@@ -1158,11 +1443,12 @@
                 "description": "数値か否かを返します",
                 "type": "Boolean"
             },
-            "class": "RAIMEI"
+            "class": "RAIMEI",
+            "module": "RAIMEI"
         },
         {
             "file": "src/RAIMEI.js",
-            "line": 206,
+            "line": 210,
             "description": "配列内の最大値を取得します",
             "itemtype": "method",
             "name": "maxValue",
@@ -1177,7 +1463,8 @@
                 "description": "配列内の最大値を返します",
                 "type": "Number"
             },
-            "class": "RAIMEI"
+            "class": "RAIMEI",
+            "module": "RAIMEI"
         },
         {
             "file": "src/WebAudioDetector.js",
@@ -1185,7 +1472,8 @@
             "license": "inazumatv.com",
             "author": "(at)taikiken / http://inazumatv.com",
             "date": "2014/04/20 - 13:12\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
-            "class": "WebAudioDetector"
+            "class": "WebAudioDetector",
+            "module": "RAIMEI"
         },
         {
             "file": "src/WebAudioDetector.js",
@@ -1197,7 +1485,8 @@
                 "type": "Boolean"
             },
             "static": 1,
-            "class": "WebAudioDetector"
+            "class": "WebAudioDetector",
+            "module": "RAIMEI"
         }
     ],
     "warnings": [
@@ -1211,7 +1500,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/tone/Cents.js:29"
+            "line": " src/sound/tone/Cents.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -1219,63 +1508,95 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/BufferSource.js:39"
+            "line": " src/sound/BufferSource.js:41"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/Oscillator.js:82"
+            "line": " src/sound/Oscillator.js:85"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:117"
+            "line": " src/sound/PlaySoundWithBuffer.js:120"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:125"
+            "line": " src/sound/PlaySoundWithBuffer.js:128"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:133"
+            "line": " src/sound/PlaySoundWithBuffer.js:136"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:141"
+            "line": " src/sound/PlaySoundWithBuffer.js:144"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:149"
+            "line": " src/sound/PlaySoundWithBuffer.js:152"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:157"
+            "line": " src/sound/PlaySoundWithBuffer.js:160"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:165"
+            "line": " src/sound/PlaySoundWithBuffer.js:168"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:173"
+            "line": " src/sound/PlaySoundWithBuffer.js:176"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/PlaySoundWithBuffer.js:222"
+            "line": " src/sound/PlaySoundWithBuffer.js:225"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/VolumeControl.js:45"
+            "line": " src/sound/PlaySoundWithOscillator.js:91"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/VolumeControl.js:53"
+            "line": " src/sound/PlaySoundWithOscillator.js:99"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/VolumeControl.js:61"
+            "line": " src/sound/PlaySoundWithOscillator.js:115"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sound/VolumeControl.js:69"
+            "line": " src/sound/PlaySoundWithOscillator.js:132"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControl.js:47"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControl.js:55"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControl.js:63"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControl.js:71"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControlWithOscillator.js:47"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControlWithOscillator.js:55"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControlWithOscillator.js:63"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sound/VolumeControlWithOscillator.js:71"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -1291,11 +1612,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/RAIMEI.js:194"
+            "line": " src/RAIMEI.js:198"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/RAIMEI.js:206"
+            "line": " src/RAIMEI.js:210"
         },
         {
             "message": "unknown tag: license",
@@ -1343,7 +1664,7 @@
         },
         {
             "message": "Missing item type\nwave type を設定します",
-            "line": " src/sound/Oscillator.js:114"
+            "line": " src/sound/Oscillator.js:117"
         },
         {
             "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/22 - 21:26\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
@@ -1362,12 +1683,12 @@
             "line": " src/sound/VolumeControl.js:1"
         },
         {
-            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:09\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
-            "line": " src/util/Detector.js:1"
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/24 - 0:12\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/sound/VolumeControlWithOscillator.js:1"
         },
         {
-            "message": "Missing item type",
-            "line": " src/RAIMEI.js:1"
+            "message": "Missing item type\nlicense inazumatv.com\nauthor (at)taikiken / http://inazumatv.com\ndate 2014/04/19 - 17:09\n\nCopyright (c) 2011-2014 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.",
+            "line": " src/util/Detector.js:1"
         },
         {
             "message": "Missing item type",

@@ -69,11 +69,15 @@
             
                 <li><a href="../classes/VolumeControl.html">VolumeControl</a></li>
             
+                <li><a href="../classes/VolumeControlWithOscillator.html">VolumeControlWithOscillator</a></li>
+            
                 <li><a href="../classes/WebAudioDetector.html">WebAudioDetector</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/RAIMEI.html">RAIMEI</a></li>
             
             </ul>
         </div>
@@ -113,6 +117,15 @@
                         <h1>PlaySoundWithBuffer Class</h1>
 <div class="box meta">
     
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                
+                    <li><a href="EventDispatcher.html">EventDispatcher</a></li>
+                
+            </ul>
+        </div>
+    
 
     
 
@@ -122,6 +135,10 @@
         </div>
     
 
+    
+        
+            Module: <a href="../modules/RAIMEI.html">RAIMEI</a>
+        
     
 
     
@@ -321,6 +338,20 @@
                                 
                             </li>
                         
+                            <li class="index-item method inherited">
+                                <a href="#method_addEventListener">addEventListener</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_dispatchEvent">dispatchEvent</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method">
                                 <a href="#method_getBuffer">getBuffer</a>
 
@@ -372,6 +403,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_getVolumeControl">getVolumeControl</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_hasEventListener">hasEventListener</a>
 
                                 
                                 
@@ -489,7 +527,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l222"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:222</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l225"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:225</code></a>
         
         </p>
 
@@ -600,7 +638,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l181"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:181</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l184"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:184</code></a>
         
         </p>
 
@@ -657,7 +695,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l209"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:209</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l212"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:212</code></a>
         
         </p>
 
@@ -714,7 +752,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l192"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:192</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l195"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:195</code></a>
         
         </p>
 
@@ -729,6 +767,198 @@
 
     </div>
 
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_addEventListener" class="method item inherited">
+    <h3 class="name"><code>addEventListener</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>listener</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_addEventListener">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_events_EventDispatcher.js.html#l29"><code>src&#x2F;events&#x2F;EventDispatcher.js:29</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">type</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>event type</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">listener</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Event Handler</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_dispatchEvent" class="method item inherited">
+    <h3 class="name"><code>dispatchEvent</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_dispatchEvent">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_events_EventDispatcher.js.html#l96"><code>src&#x2F;events&#x2F;EventDispatcher.js:96</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">event</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>require event.type:String</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -773,7 +1003,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l141"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:141</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l144"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:144</code></a>
         
         </p>
 
@@ -845,7 +1075,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l149"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:149</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l152"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:152</code></a>
         
         </p>
 
@@ -917,7 +1147,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l165"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:165</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l168"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:168</code></a>
         
         </p>
 
@@ -989,7 +1219,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l125"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:125</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l128"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:128</code></a>
         
         </p>
 
@@ -1061,7 +1291,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l133"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:133</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l136"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:136</code></a>
         
         </p>
 
@@ -1133,7 +1363,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l173"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:173</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l176"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:176</code></a>
         
         </p>
 
@@ -1205,7 +1435,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l117"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:117</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l120"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:120</code></a>
         
         </p>
 
@@ -1277,7 +1507,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l157"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:157</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l160"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:160</code></a>
         
         </p>
 
@@ -1304,6 +1534,129 @@
                     
                     <p>RAIMEI.VolumeControl instanceを返します</p>
 
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_hasEventListener" class="method item inherited">
+    <h3 class="name"><code>hasEventListener</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>listener</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_hasEventListener">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_events_EventDispatcher.js.html#l54"><code>src&#x2F;events&#x2F;EventDispatcher.js:54</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">type</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>event type</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">listener</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Event Handler</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
                 
             </div>
         </div>
@@ -1345,7 +1698,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l84"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:84</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l87"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:87</code></a>
         
         </p>
 
@@ -1416,7 +1769,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l51"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:51</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l54"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:54</code></a>
         
         </p>
 
@@ -1512,7 +1865,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l98"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:98</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l101"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:101</code></a>
         
         </p>
 
@@ -1577,7 +1930,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l108"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:108</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l111"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:111</code></a>
         
         </p>
 
@@ -1656,7 +2009,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l42"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:42</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l45"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:45</code></a>
         
         </p>
 
@@ -1711,7 +2064,7 @@
             
         
         
-        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l75"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:75</code></a>
+        <a href="../files/src_sound_PlaySoundWithBuffer.js.html#l78"><code>src&#x2F;sound&#x2F;PlaySoundWithBuffer.js:78</code></a>
         
         </p>
 

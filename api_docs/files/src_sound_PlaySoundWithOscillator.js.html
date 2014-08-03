@@ -69,11 +69,15 @@
             
                 <li><a href="../classes/VolumeControl.html">VolumeControl</a></li>
             
+                <li><a href="../classes/VolumeControlWithOscillator.html">VolumeControlWithOscillator</a></li>
+            
                 <li><a href="../classes/WebAudioDetector.html">WebAudioDetector</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/RAIMEI.html">RAIMEI</a></li>
             
             </ul>
         </div>
@@ -159,13 +163,22 @@
 
         var p = PlaySoundWithOscillator.prototype;
 
+        p.constructor = PlaySoundWithOscillator;
+
         EventDispatcher.initialize( p );
 
+        /**
+         * @method start
+         */
         p.start = function () {
             this.play( 0 );
             this.dispatchEvent( { type: &quot;start&quot;, delay: 0, khz: this._khz, semitone: this._semitone_value, wave: this._type, currentTarget: this } );
         };
 
+        /**
+         * @method play
+         * @param time
+         */
         p.play = function ( time ) {
             var context = this._context,
                 semitone_value = this._semitone_value,
@@ -178,43 +191,78 @@
             oscillator = new RAIMEI.Oscillator( context, semitone_value, type, khz );
             oscillator_node = oscillator.getOscillator();
 
+            var volume_control = new RAIMEI.VolumeControlWithOscillator( context, oscillator_node );
+            volume_control.setVolume( 1 );
+
             this._oscillator_node = oscillator_node;
             this._oscillator = oscillator;
             oscillator_node.start( time );
             this.dispatchEvent( { type: &quot;play&quot;, delay: time, khz: khz, semitone: semitone_value, wave: type, currentTarget: oscillator_node } );
         };
 
+        /**
+         * @method stop
+         */
         p.stop = function () {
             this._oscillator_node.stop( 0 );
             this.dispatchEvent( { type: &quot;stop&quot;, delay: 0, khz: this._khz, semitone: this._semitone_value, wave: this._type, currentTarget: this } );
         };
 
+        /**
+         * @method getOscillator
+         * @returns {*|PlaySoundWithOscillator._oscillator_node}
+         */
         p.getOscillator = function () {
             return this._oscillator_node;
         };
 
+        /**
+         * @method getType
+         * @returns {*|PlaySoundWithOscillator._type}
+         */
         p.getType = function () {
             return this._type;
         };
 
+        /**
+         * @method setType
+         * @param type
+         */
         p.setType = function ( type ) {
             this._type = type;
         };
 
+        /**
+         * @method getKHZ
+         * @returns {*|PlaySoundWithOscillator._khz}
+         */
         p.getKHZ = function () {
             return this._khz;
         };
 
+        /**
+         * @method setKHZ
+         * @param khz
+         */
         p.setKHZ = function ( khz ) {
+            this._oscillator&amp;&amp;this._oscillator.setFrequency( khz );
             this._khz = khz;
         };
 
+        /**
+         * @method getSemitone
+         * @returns {*|PlaySoundWithOscillator._semitone_value}
+         */
         p.getSemitone = function () {
             return this._semitone_value;
         };
 
+        /**
+         * @method setSemitone
+         * @param semitone_value
+         */
         p.setSemitone = function ( semitone_value ) {
-            this._oscillator.setSemitone( semitone_value );
+            this._oscillator&amp;&amp;this._oscillator.setSemitone( semitone_value );
             this._semitone_value = semitone_value;
         };
 

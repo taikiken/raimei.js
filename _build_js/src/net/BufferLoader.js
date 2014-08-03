@@ -33,6 +33,8 @@
 
         var p = BufferLoader.prototype;
 
+        p.constructor = BufferLoader;
+
         EventDispatcher.initialize( p );
 
         /**

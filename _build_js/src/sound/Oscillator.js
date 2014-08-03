@@ -80,6 +80,8 @@
 
         var p = Oscillator.prototype;
 
+        p.constructor = Oscillator;
+
         /**
          * @method getOscillator
          * @returns {OscillatorNode} OscillatorNode を返します

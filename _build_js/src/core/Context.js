@@ -37,6 +37,8 @@
 
         var p = Context.prototype;
 
+        p.constructor = Context;
+
         /**
          * @method get
          * @returns {AudioContext} AudioContext を返します

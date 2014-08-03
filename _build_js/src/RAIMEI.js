@@ -9,8 +9,12 @@
  * http://www.opensource.org/licenses/mit-license.html
  *
  * This notice shall be included in all copies or substantial portions of the Software.
+ *
+ * @module RAIMEI
  */
-var RAIMEI = {};
+var RAIMEI = {
+    version: "0.0.9"
+};
 
 // polyfill
 ( function ( window ){

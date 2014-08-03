@@ -31,6 +31,8 @@
 
         var p = Semitone.prototype;
 
+        p.constructor = Semitone;
+
         /**
          * @method getSemitone
          * @returns {int} Semitone._semitone_value 現在の半音値を返します

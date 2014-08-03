@@ -69,11 +69,15 @@
             
                 <li><a href="../classes/VolumeControl.html">VolumeControl</a></li>
             
+                <li><a href="../classes/VolumeControlWithOscillator.html">VolumeControlWithOscillator</a></li>
+            
                 <li><a href="../classes/WebAudioDetector.html">WebAudioDetector</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/RAIMEI.html">RAIMEI</a></li>
             
             </ul>
         </div>
@@ -135,6 +139,7 @@
     RAIMEI.PlaySoundWithBuffer = ( function (){
         /**
          * @class PlaySoundWithBuffer
+         * @uses EventDispatcher
          * @param {AudioContext} context window.AudioContext instance
          * @param {AudioBuffer} buffer AudioBuffer instance
          * @param {Boolean} [loop] loop option default is false
@@ -152,6 +157,8 @@
         }
 
         var p = PlaySoundWithBuffer.prototype;
+
+        p.constructor = PlaySoundWithBuffer;
 
         EventDispatcher.initialize( p );
 

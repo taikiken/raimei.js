@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>RAIMEI - raimei.js API</title>
+    <title>VolumeControlWithOscillator - raimei.js API</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -114,12 +114,16 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>RAIMEI Class</h1>
+                        <h1>VolumeControlWithOscillator Class</h1>
 <div class="box meta">
     
 
     
 
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_sound_VolumeControlWithOscillator.js.html#l18"><code>src&#x2F;sound&#x2F;VolumeControlWithOscillator.js:18</code></a>
+        </div>
     
 
     
@@ -138,68 +142,10 @@
 </div>
 
 
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_extend">extend</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNumeric">isNumeric</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_maxValue">maxValue</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_extend" class="method item">
-    <h3 class="name"><code>extend</code></h3>
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_VolumeControlWithOscillator" class="method item">
+    <h3 class="name"><code>VolumeControlWithOscillator</code></h3>
 
     
         <div class="args">
@@ -207,13 +153,13 @@
             
                 <li class="arg">
                     
-                        <code>PARENT</code>
+                        <code>context</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>CHILD</code>
+                        <code>oscillator_node</code>
                     
                 </li>
             
@@ -246,7 +192,7 @@
             
         
         
-        <a href="../files/src_RAIMEI.js.html#l185"><code>src&#x2F;RAIMEI.js:185</code></a>
+        <a href="../files/src_sound_VolumeControlWithOscillator.js.html#l18"><code>src&#x2F;sound&#x2F;VolumeControlWithOscillator.js:18</code></a>
         
         </p>
 
@@ -257,8 +203,7 @@
     </div>
 
     <div class="description">
-        <p>Class継承に使用します</p>
-
+        
     </div>
 
     
@@ -269,14 +214,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">PARENT</code>
-                        <span class="type">Function</span>
+                        <code class="param-name">context</code>
+                        <span class="type">AudioContext</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>親クラス</p>
+                        <p>AudioContext instance</p>
 
                     </div>
 
@@ -285,15 +230,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">CHILD</code>
-                        <span class="type">Function</span>
+                        <code class="param-name">oscillator_node</code>
+                        <span class="type">OscillatorNode</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>子クラス</p>
-
+                         
                     </div>
 
                     
@@ -308,9 +252,84 @@
     
 </div>
 
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__normalize">_normalize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getGain">getGain</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getGainNode">getGainNode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getVolume">getVolume</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setVolume">setVolume</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
                 
-                    <div id="method_isNumeric" class="method item">
-    <h3 class="name"><code>isNumeric</code></h3>
+                    <div id="method__normalize" class="method item protected">
+    <h3 class="name"><code>_normalize</code></h3>
 
     
         <div class="args">
@@ -318,7 +337,7 @@
             
                 <li class="arg">
                     
-                        <code>obj</code>
+                        <code>val</code>
                     
                 </li>
             
@@ -328,7 +347,105 @@
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_VolumeControlWithOscillator.js.html#l71"><code>src&#x2F;sound&#x2F;VolumeControlWithOscillator.js:71</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>0 ~ 1 範囲に正規化</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">val</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                    <p>0 ~ 1の数値を返します</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getGain" class="method item">
+    <h3 class="name"><code>getGain</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">AudioParam</span>
         </span>
     
 
@@ -355,7 +472,7 @@
             
         
         
-        <a href="../files/src_RAIMEI.js.html#l198"><code>src&#x2F;RAIMEI.js:198</code></a>
+        <a href="../files/src_sound_VolumeControlWithOscillator.js.html#l63"><code>src&#x2F;sound&#x2F;VolumeControlWithOscillator.js:63</code></a>
         
         </p>
 
@@ -366,34 +483,9 @@
     </div>
 
     <div class="description">
-        <p>数値チェックを行います</p>
-
+        
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">obj</code>
-                        <span class="type"></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Number</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -403,9 +495,9 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Boolean</span>:
+                        <span class="type">AudioParam</span>:
                     
-                    <p>数値か否かを返します</p>
+                    <p>GainNode.gain を返します</p>
 
                 
             </div>
@@ -416,21 +508,83 @@
 </div>
 
                 
-                    <div id="method_maxValue" class="method item">
-    <h3 class="name"><code>maxValue</code></h3>
+                    <div id="method_getGainNode" class="method item">
+    <h3 class="name"><code>getGainNode</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">GainNode</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
             
-                <li class="arg">
-                    
-                        <code>arr</code>
-                    
-                </li>
+                
+                <p>
+                
+                Defined in
+                
             
-            </ul><span class="paren">)</span>
+        
+        
+        <a href="../files/src_sound_VolumeControlWithOscillator.js.html#l55"><code>src&#x2F;sound&#x2F;VolumeControlWithOscillator.js:55</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">GainNode</span>:
+                    
+                    <p>GainNodeを返します</p>
+
+                
+            </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getVolume" class="method item">
+    <h3 class="name"><code>getVolume</code></h3>
+
+    
+        <span class="paren">()</span>
     
 
     
@@ -462,7 +616,7 @@
             
         
         
-        <a href="../files/src_RAIMEI.js.html#l210"><code>src&#x2F;RAIMEI.js:210</code></a>
+        <a href="../files/src_sound_VolumeControlWithOscillator.js.html#l47"><code>src&#x2F;sound&#x2F;VolumeControlWithOscillator.js:47</code></a>
         
         </p>
 
@@ -473,33 +627,9 @@
     </div>
 
     <div class="description">
-        <p>配列内の最大値を取得します</p>
-
+        
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">arr</code>
-                        <span class="type">Array</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -511,11 +641,100 @@
                     
                         <span class="type">Number</span>:
                     
-                    <p>配列内の最大値を返します</p>
+                    <p>現在の volume 値を返します</p>
 
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setVolume" class="method item">
+    <h3 class="name"><code>setVolume</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>val</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sound_VolumeControlWithOscillator.js.html#l38"><code>src&#x2F;sound&#x2F;VolumeControlWithOscillator.js:38</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>volumeを変更します</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">val</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>0 ~ 1</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     

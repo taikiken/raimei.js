@@ -27,6 +27,7 @@
          * 1オクターブ cents 1200
          * @const OCTAVE
          * @type {number}
+         * @static
          */
         Octave.OCTAVE = 1200;//12 * 100;
 

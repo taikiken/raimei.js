@@ -33,6 +33,8 @@
 
         var p = VolumeControlWithOscillator.prototype;
 
+        p.constructor = VolumeControlWithOscillator;
+
         /**
          * volumeを変更します
          * @method setVolume

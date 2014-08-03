@@ -60,6 +60,7 @@
         <concat destfile="${concatenated}" encoding="UTF-8" outputencoding="UTF-8" fixlastline="true">
             <filelist refid="file-list" />
         </concat>
+
         <concat destfile="${concatenated_dev}" encoding="UTF-8" outputencoding="UTF-8" fixlastline="true">
             <filelist refid="file-list" />
         </concat>
